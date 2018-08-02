@@ -1,0 +1,5 @@
+C:\Users\iCat\Documents\Visual Studio 2015\Projects\MVC_Exercise\WebServicePrj\bin\WebServicePrj.dll.config
+C:\Users\iCat\Documents\Visual Studio 2015\Projects\MVC_Exercise\WebServicePrj\bin\WebServicePrj.dll
+C:\Users\iCat\Documents\Visual Studio 2015\Projects\MVC_Exercise\WebServicePrj\bin\WebServicePrj.pdb
+C:\Users\iCat\Documents\Visual Studio 2015\Projects\MVC_Exercise\WebServicePrj\obj\Debug\WebServicePrj.dll
+C:\Users\iCat\Documents\Visual Studio 2015\Projects\MVC_Exercise\WebServicePrj\obj\Debug\WebServicePrj.pdb

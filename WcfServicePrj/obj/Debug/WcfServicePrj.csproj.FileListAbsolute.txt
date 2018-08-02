@@ -1,0 +1,12 @@
+D:\Download\Head First\WcfServicePrj\bin\WcfServicePrj.dll.config
+D:\Download\Head First\WcfServicePrj\bin\WcfServicePrj.dll
+D:\Download\Head First\WcfServicePrj\bin\WcfServicePrj.pdb
+D:\Download\Head First\WcfServicePrj\obj\Debug\WcfServicePrj.csprojResolveAssemblyReference.cache
+D:\Download\Head First\WcfServicePrj\obj\Debug\WcfServicePrj.dll
+D:\Download\Head First\WcfServicePrj\obj\Debug\WcfServicePrj.pdb
+C:\Users\iCat\Documents\Visual Studio 2015\Projects\MVC_Exercise\WcfServicePrj\bin\WcfServicePrj.dll.config
+C:\Users\iCat\Documents\Visual Studio 2015\Projects\MVC_Exercise\WcfServicePrj\bin\WcfServicePrj.dll
+C:\Users\iCat\Documents\Visual Studio 2015\Projects\MVC_Exercise\WcfServicePrj\bin\WcfServicePrj.pdb
+C:\Users\iCat\Documents\Visual Studio 2015\Projects\MVC_Exercise\WcfServicePrj\obj\Debug\WcfServicePrj.csprojResolveAssemblyReference.cache
+C:\Users\iCat\Documents\Visual Studio 2015\Projects\MVC_Exercise\WcfServicePrj\obj\Debug\WcfServicePrj.dll
+C:\Users\iCat\Documents\Visual Studio 2015\Projects\MVC_Exercise\WcfServicePrj\obj\Debug\WcfServicePrj.pdb

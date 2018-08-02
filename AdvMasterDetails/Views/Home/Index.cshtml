@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Master details entry form</h2>
+<div class="container">
+    <div class="master">
+        <div style="padding:10px 0;text-align:right">
+            <input id="Create" type="button" value="Create Order" class="btn btn-success" style="padding:10px 20px" />
+        </div>
+        <h2>List</h2>
+        <table class="table table-responsive">
+            <tr>
+                <td>Order No</td>
+                <td>Order Date</td>
+                <td>Description</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr class="mycontainer" id="orderlist">
+                <td>
+                    <select id="productCategory" class="pc form-control" onchange="LoadProduct(this)">
+                        <option value="0">Select...</option>
+                    </select>
+                    <span class="error">Select category</span>
+                </td>
+                <td>
+                    <select id="product" class="product form-control">
+                        <option value="0">Select...</option>
+                    </select>
+                    <span class="error">Select product</span>
+                </td>
+                <td>
+                    <input type="text" id="quantity" class="quantity form-control" />
+                    <span class="error">Valid quantity required</span>
+                </td>
+                <td>
+                    <input type="button" id="detail" value="Detail" style="width:80px" class="btn btn-info" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+@section scripts{
+<script type="text/javascript">
+    $(function () {
+        $("#Create").click(function(){
+            window.location = "/Home/Create/";
+        });
+    });
+
+    $.ajax({
+        type: "GET",
+        url: "/Home/GetOrders",
+        success: function (data) {
+            $("#orderlist tr:gt(0)").remove();
+            $.each(data, function (i, item) {
+                //master
+                var dd = new Date(item.Date);
+                var headRow = "<tr>" +
+                            "<td>" + item.No + "</td>" +
+                            "<td>" + dd.getFullYear() + '/' + (dd.getMonth() + 1) + '/' + dd.getDate() + "</td>" +
+                            "<td>" + item.Description + "</td>" +
+                            "<td>" +
+                            "<a href='javascript:modify(" + item.ID + ")'>[Modify]</a>&nbsp;" +
+                            "</td>" +
+                            "</tr>";
+                $(headRow).appendTo($("#listH"));
+            });
+        },
+        error: function () {
+            alert("fail");
+        }
+    })
+</script>
+}
