@@ -34,17 +34,6 @@ app.controller("AngularJs_Controller", function ($scope, $timeout, $rootScope, $
     selectAvailableStatus('');
 
     function selectRoomDetails(RoomNo) {
-        /*
-        $http.get('/api/HotelAPI/getHotelRooms/', { params: { RoomNo: RoomNo } })
-            .success(function(data) {
-                $scope.HotelRoomData = data;
-                if ($scope.HotelRoomData.length > 0) {
-                }
-            })
-            .error(function() {
-                $scope.error = "An Error has occured while loading posts!";
-            });
-        */
         $http.get('/api/HotelAPI/getHotelRooms/', {
             params: { RoomNo: RoomNo }
         })
@@ -58,22 +47,12 @@ app.controller("AngularJs_Controller", function ($scope, $timeout, $rootScope, $
     }
 
     function selectRoomBookingDetails(RoomID) {
-        /*
-        $http.get('/api/HotelAPI/getRoomBookingDetails/', { params: { RoomID: RoomID } })
-            .success(function(data) {
-                $scope.RoomBookingData = data;
-                if ($scope.RoomBookingData.length > 0) {
-                }
-            })
-            .error(function() {
-                $scope.error = "An Error has occured while loading posts!";
-            });
-        */
         $http.get('/api/HotelAPI/getRoomBookingDetails/', {
             params: { RoomID: RoomID }
         })
         .then(function successCallback(response) {
             $scope.RoomBookingData = response.data;
+            console.log($scope.RoomBookingData);
             if ($scope.RoomBookingData.length > 0) {
             }
         }, function errorCallback() {
@@ -82,23 +61,11 @@ app.controller("AngularJs_Controller", function ($scope, $timeout, $rootScope, $
     }
 
     function selectAvailableStatus(RoomNo) {
-        /*
-        $http.get('/api/HotelAPI/getRoomDashboardDetails/', { params: { RoomNo: RoomNo } })
-            .success(function(data) {
-                $scope.RoomAvailableData = data;
-                if ($scope.RoomAvailableData.length > 0) {
-                }
-            })
-            .error(function() {
-                $scope.error = "An Error has occured while loading posts!";
-            });
-        */
         $http.get('/api/HotelAPI/getRoomDashboardDetails/', {
             params: { RoomNo: RoomNo }
         })
         .then(function successCallback(response) {
             $scope.RoomAvailableData = response.data;
-            console.log($scope.RoomAvailableData);
             if ($scope.RoomAvailableData.length > 0) {
             }
         }, function errorCallback() {

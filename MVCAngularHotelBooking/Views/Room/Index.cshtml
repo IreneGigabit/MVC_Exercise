@@ -1,0 +1,107 @@
+﻿
+@{
+    ViewBag.Title = "SHANU Hotel Room Manage System";
+}
+
+<div data-ng-app="AngularJs_Module" data-ng-controller="AngularJs_Controller">
+
+    <div class="container-fluid pt-3 border-primary border-bottom-3">
+        <div class="row">
+            <div class="col col-2 p-0 text-left">
+                Welcome Mr. {{'SHANU'}}
+            </div>
+            <div class="col col-8 p-0 text-center">
+                <h3>Shanu Hotel Booking System using MVC & AngularJS  :)</h3>
+            </div>
+            <div class="col col-2 p-0 text-right">
+                Today Date is :{{date | date:'yyyy-MM-dd'}}
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mt-1 pt-1 pb-1 bg-info text-center">
+        <h3 class="text-light">Manage Room Booking Details Add/Edit and Delete Room Booking Details</h3>
+    </div>
+
+    <table>
+        <tr>
+            <td>Room Booking ID:</td>
+            <td><input type=text></td>
+            <td>Room No</td>
+            <td><input type=text></td>
+        </tr>
+        <tr>
+            <td>Booking From:</td>
+            <td><input type=text></td>
+            <td>Booking To:</td>
+            <td><input type=text></td>
+        </tr>
+        <tr>
+            <td>Booking Status:</td>
+            <td><input type=text></td>
+            <td>Room Paid:</td>
+            <td><input type=text></td>
+        </tr>
+        <tr>
+            <td>Advance Payed:</td>
+            <td><input type=text></td>
+            <td>Total Amount Payed:</td>
+            <td><input type=text></td>
+        </tr>
+    </table>
+    <input type="button" value="Save Room Booking Detail" />
+
+    <table>
+        <tr>
+            <td>BookingID</td>
+            <td>RoomID</td>
+            <td>Room No</td>
+            <td>BookedDateFR</td>
+            <td>BookedDateTO</td>
+            <td>BookingStatus</td>
+            <td>PaymentStatus</td>
+            <td>AdvancePayed</td>
+            <td>TotalAmountPayed</td>
+        </tr>
+        <tbody ng-repeat="details in RoomBookingData">
+            <tr>
+                <td>{{details.BookingID}}</td>
+                <td>{{details.RoomID}}</td>
+                <td>{{details.RoomNo}}</td>
+                <td>{{details.BookedDateFR}}</td>
+                <td>{{details.BookedDateTO}}</td>
+                <td>{{details.BookingStatus}}</td>
+                <td>{{details.PaymentStatus}}</td>
+                <td>{{details.AdvancePayed}}</td>
+                <td>{{details.TotalAmountPayed}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+    <div class="container-fluid mt-1 pt-1 pb-1 bg-success text-center">
+        <h3 class="text-light">Manage Room Details</h3>
+    </div>
+
+    <table>
+        <tr>
+            <td>Room No</td>
+            <td>Room Type</td>
+            <td>Room Price</td>
+        </tr>
+        <tbody ng-repeat="details in HotelRoomData">
+            <tr>
+                <td>{{details.RoomNo}}</td>
+                <td>{{details.RoomType}}</td>
+                <td>{{details.Prize}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-animate.min.js"></script>
+    <script src="~/Scripts/MyAngular/Controller.js"></script>
+}

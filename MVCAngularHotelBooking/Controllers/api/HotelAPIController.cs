@@ -10,10 +10,10 @@ namespace MVCAngularHotelBooking.Controllers
     public class HotelAPIController : ApiController
     {
         /*
-        Get 用于请求数据。 (Select)
-        Post 用于创建数据。 (Insert)
-        Put 用于更新数据。
-        Delete 用于删除数据。
+        Get 用於請求數據。 (Select)
+        Post 用於建立數據。 (Insert)
+        Put 用於更新數據。
+        Delete 用於刪除數據。
         */
         HotelDBEntities db = new HotelDBEntities();
 
