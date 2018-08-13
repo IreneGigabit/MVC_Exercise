@@ -30,23 +30,6 @@ namespace MVCAngularHotelBooking
         public virtual DbSet<HotelMaster> HotelMasters { get; set; }
         public virtual DbSet<RoomBooking> RoomBookings { get; set; }
     
-        public virtual ObjectResult<string> USP_Hotel_Insert(string roomNo, string roomType, string prize)
-        {
-            var roomNoParameter = roomNo != null ?
-                new ObjectParameter("RoomNo", roomNo) :
-                new ObjectParameter("RoomNo", typeof(string));
-    
-            var roomTypeParameter = roomType != null ?
-                new ObjectParameter("RoomType", roomType) :
-                new ObjectParameter("RoomType", typeof(string));
-    
-            var prizeParameter = prize != null ?
-                new ObjectParameter("Prize", prize) :
-                new ObjectParameter("Prize", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("USP_Hotel_Insert", roomNoParameter, roomTypeParameter, prizeParameter);
-        }
-    
         public virtual ObjectResult<USP_HotelMaster_Select_Result> USP_HotelMaster_Select(string roomNo)
         {
             var roomNoParameter = roomNo != null ?
@@ -118,6 +101,27 @@ namespace MVCAngularHotelBooking
                 new ObjectParameter("RoomID", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_RoomBooking_SelectALL_Result>("USP_RoomBooking_SelectALL", roomIDParameter);
+        }
+    
+        public virtual ObjectResult<string> USP_Hotel_Insert(Nullable<int> roomID, string roomNo, string roomType, string prize)
+        {
+            var roomIDParameter = roomID.HasValue ?
+                new ObjectParameter("RoomID", roomID) :
+                new ObjectParameter("RoomID", typeof(int));
+    
+            var roomNoParameter = roomNo != null ?
+                new ObjectParameter("RoomNo", roomNo) :
+                new ObjectParameter("RoomNo", typeof(string));
+    
+            var roomTypeParameter = roomType != null ?
+                new ObjectParameter("RoomType", roomType) :
+                new ObjectParameter("RoomType", typeof(string));
+    
+            var prizeParameter = prize != null ?
+                new ObjectParameter("Prize", prize) :
+                new ObjectParameter("Prize", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("USP_Hotel_Insert", roomIDParameter, roomNoParameter, roomTypeParameter, prizeParameter);
         }
     }
 }

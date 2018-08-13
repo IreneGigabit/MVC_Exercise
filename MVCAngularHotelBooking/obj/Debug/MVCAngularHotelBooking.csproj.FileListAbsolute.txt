@@ -99,7 +99,6 @@ C:\Users\iCat\Documents\Visual Studio 2015\Projects\MVC_Exercise\MVCAngularHotel
 C:\Users\iCat\Documents\Visual Studio 2015\Projects\MVC_Exercise\MVCAngularHotelBooking\obj\Debug\MVCAngularHotelBooking.pdb
 C:\Users\iCat\Documents\Visual Studio 2015\Projects\MVC_Exercise\MVCAngularHotelBooking\bin\System.Web.Optimization.xml
 C:\Users\iCat\Documents\Visual Studio 2015\Projects\MVC_Exercise\MVCAngularHotelBooking\bin\zh-Hans\Microsoft.AspNet.Identity.Owin.resources.dll
-C:\Users\iCat\Documents\Visual Studio 2015\Projects\MVC_Exercise\MVCAngularHotelBooking\obj\Debug\MVCAngularHotelBooking.csprojResolveAssemblyReference.cache
 C:\Users\iToy\Documents\Visual Studio 2013\Projects\MVC_Exercise\MVCAngularHotelBooking\bin\ApplicationInsights.config
 C:\Users\iToy\Documents\Visual Studio 2013\Projects\MVC_Exercise\MVCAngularHotelBooking\bin\roslyn\csc.exe
 C:\Users\iToy\Documents\Visual Studio 2013\Projects\MVC_Exercise\MVCAngularHotelBooking\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -203,3 +202,4 @@ C:\Users\iToy\Documents\Visual Studio 2013\Projects\MVC_Exercise\MVCAngularHotel
 C:\Users\iToy\Documents\Visual Studio 2013\Projects\MVC_Exercise\MVCAngularHotelBooking\bin\MVCAngularHotelBooking.pdb
 C:\Users\iToy\Documents\Visual Studio 2013\Projects\MVC_Exercise\MVCAngularHotelBooking\obj\Debug\MVCAngularHotelBooking.csprojResolveAssemblyReference.cache
 C:\Users\iToy\Documents\Visual Studio 2013\Projects\MVC_Exercise\MVCAngularHotelBooking\bin\Microsoft.CSharp.dll
+C:\Users\iCat\Documents\Visual Studio 2015\Projects\MVC_Exercise\MVCAngularHotelBooking\bin\Microsoft.CSharp.dll

@@ -23,6 +23,7 @@
     <Property Name="TotalAmountPayed" Type="varchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <Function Name="USP_Hotel_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RoomID" Type="int" Mode="In" />
     <Parameter Name="RoomNo" Type="varchar" Mode="In" />
     <Parameter Name="RoomType" Type="varchar" Mode="In" />
     <Parameter Name="Prize" Type="varchar" Mode="In" />

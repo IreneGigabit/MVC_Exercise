@@ -27,7 +27,7 @@ namespace MVCAngularHotelBooking.Controllers
 
         // To insert Hotel Room Details
         [HttpGet]
-        public IEnumerable<string> insertHotelRoom(string RoomNo, string RoomType, string Prize) {
+        public IEnumerable<string> insertHotelRoom(int RoomID, string RoomNo, string RoomType, string Prize) {
             if (RoomNo == null)
                 RoomNo = "";
 
@@ -37,7 +37,7 @@ namespace MVCAngularHotelBooking.Controllers
             if (Prize == null)
                 Prize = "";
 
-            return db.USP_Hotel_Insert(RoomNo, RoomType, Prize).AsEnumerable();
+            return db.USP_Hotel_Insert(RoomID, RoomNo, RoomType, Prize).AsEnumerable();
         }
 
         // to Search all Room Booking Details

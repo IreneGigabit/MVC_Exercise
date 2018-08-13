@@ -52,7 +52,6 @@ app.controller("AngularJs_Controller", function ($scope, $timeout, $rootScope, $
         })
         .then(function successCallback(response) {
             $scope.RoomBookingData = response.data;
-            console.log($scope.RoomBookingData);
             if ($scope.RoomBookingData.length > 0) {
             }
         }, function errorCallback() {
@@ -73,19 +72,26 @@ app.controller("AngularJs_Controller", function ($scope, $timeout, $rootScope, $
         });
     }
 
+
+    //Form Validation
+    $scope.$watch("f2.$valid", function (isValid) {
+        $scope.IsFormValid2 = isValid;
+    });
+
     //Save Hotel Room
     $scope.saveRoom = function () {
         $scope.IsFormSubmitted2 = true;
         $scope.Message = "";
-        if ($scope.IsFormValid2 = false) {
-            $http.get('/api/HotelAPI/insertHotelRoom/', { params: { RoomNo: $scope.RoomNo, RoomType: $scope.RoomType, Prize: $scope.Prize } })
-            .success(function (response) {
+        if ($scope.f2.$valid) {//同$scope.$watch("f2.$valid")
+            $http.get('/api/HotelAPI/insertHotelRoom/', {
+                params: { RoomID: $scope.RoomID, RoomNo: $scope.RoomNo, RoomType: $scope.RoomType, Prize: $scope.Prize }
+            })
+            .then(function successCallback(response) {
                 $scope.roomInserted = response.data;
                 alert($scope.roomInserted);
                 cleardetails();
                 selectRoomDetails('');
-            })
-            .error(function () {
+            }, function errorCallback() {
                 $scope.error = "An Error has occured while loading posts!";
             });
         }

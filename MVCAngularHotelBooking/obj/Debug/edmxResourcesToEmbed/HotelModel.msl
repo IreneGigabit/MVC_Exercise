@@ -25,7 +25,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="USP_Hotel_Insert" FunctionName="HotelDBModel.Store.USP_Hotel_Insert" />
     <FunctionImportMapping FunctionImportName="USP_HotelMaster_Select" FunctionName="HotelDBModel.Store.USP_HotelMaster_Select">
       <ResultMapping>
         <ComplexTypeMapping TypeName="HotelDBModel.USP_HotelMaster_Select_Result">
@@ -66,5 +65,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_Hotel_Insert" FunctionName="HotelDBModel.Store.USP_Hotel_Insert" />
   </EntityContainerMapping>
 </Mapping>
