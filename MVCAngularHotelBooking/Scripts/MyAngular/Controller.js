@@ -99,4 +99,14 @@ app.controller("AngularJs_Controller", function ($scope, $timeout, $rootScope, $
             $scope.Message = "All the fields are required.";
         }
     };
+
+    //
+    function cleardetails() {
+        $scope.RoomID = 0;
+        $scope.RoomNo = "";
+        $scope.RoomType = "";
+        $scope.Prize = "";
+
+        $scope.IsFormSubmitted2 = false;
+    }
 })
