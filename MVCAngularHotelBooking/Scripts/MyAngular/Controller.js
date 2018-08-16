@@ -100,6 +100,14 @@ app.controller("AngularJs_Controller", function ($scope, $timeout, $rootScope, $
         }
     };
 
+    $scope.modiRoom =function (idx) {
+        $scope.RoomID = $scope.HotelRoomData[idx].RoomID;
+        $scope.RoomNo = $scope.HotelRoomData[idx].RoomNo;
+        $scope.RoomType = $scope.HotelRoomData[idx].RoomType;
+        $scope.Prize = $scope.HotelRoomData[idx].Prize;
+
+    }
+
     //
     function cleardetails() {
         $scope.RoomID = 0;
@@ -109,4 +117,5 @@ app.controller("AngularJs_Controller", function ($scope, $timeout, $rootScope, $
 
         $scope.IsFormSubmitted2 = false;
     }
+
 })

@@ -141,13 +141,15 @@
         <div class="col col-6 p-0">
             <table>
                 <tr>
+                    <td>Actio</td>
                     <td>Room ID</td>
                     <td>Room No</td>
                     <td>Room Type</td>
                     <td>Room Price</td>
                 </tr>
                 <tbody ng-repeat="details in HotelRoomData">
-                    <tr ng-click="modiRoom($index)">
+                    <tr>
+                        <td><span ng-click="modiRoom($index)">[modify]</span></td>
                         <td>{{details.RoomID}}</td>
                         <td>{{details.RoomNo}}</td>
                         <td>{{details.RoomType}}</td>
