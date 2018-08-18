@@ -24,11 +24,16 @@ namespace MVCAngularHotelBooking
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/CSS/Bootstrap").Include(
-                            "~/Content/bootstrap.css"));
+                            "~/Content/bootstrap.css"
+                            ));
+            bundles.Add(new StyleBundle("~/CSS/FontAwesome").Include(
+                            "~/Content/fontawesome.min.css"
+                            ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css"
+                      ));
         }
     }
 }

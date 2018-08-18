@@ -4,12 +4,15 @@
 }
 
 @section style {
-    <style>
+<link href="~/Content/all.min.css" rel="stylesheet" />    <style>
         .error {
             color: #FF0000;
         }
         .readonly {
             background-color:tan;
+        }
+        .action{
+            cursor:pointer;
         }
     </style>
 }
@@ -96,7 +99,7 @@
     </div>
 
     <div class="row container-fluid">
-        <div class="col col-6 p-0">
+        <div class="col col-5 p-0">
             <form novalidate name="f2" ng-submit="saveRoom()">
                 <table>
                     <tr>
@@ -138,18 +141,23 @@
                 </table>
             </form>
         </div>
-        <div class="col col-6 p-0">
-            <table>
-                <tr>
-                    <td>Actio</td>
-                    <td>Room ID</td>
-                    <td>Room No</td>
-                    <td>Room Type</td>
-                    <td>Room Price</td>
-                </tr>
-                <tbody ng-repeat="details in HotelRoomData">
+        <div class="col col-7 p-0">
+            <table class="table table-bordered table-hover table-sm">
+                <thead class="thead-light">
                     <tr>
-                        <td><span ng-click="modiRoom($index)">[modify]</span></td>
+                        <th>Action</th>
+                        <th>Room ID</th>
+                        <th>Room No</th>
+                        <th>Room Type</th>
+                        <th>Room Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="details in HotelRoomData">
+                        <td>
+                            <i class="fas fa-pencil-alt action" ng-click="modiRoom($index)"></i>&nbsp;
+                            <i class="far fa-trash-alt action" ng-click="delRoom($index)"></i>
+                        </td>
                         <td>{{details.RoomID}}</td>
                         <td>{{details.RoomNo}}</td>
                         <td>{{details.RoomType}}</td>

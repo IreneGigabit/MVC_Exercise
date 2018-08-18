@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Newtonsoft.Json.Linq;
 
 namespace MVCAngularHotelBooking.Controllers
 {
@@ -27,7 +28,7 @@ namespace MVCAngularHotelBooking.Controllers
 
         // To insert Hotel Room Details
         [HttpGet]
-        public IEnumerable<string> insertHotelRoom(int RoomID, string RoomNo, string RoomType, string Prize) {
+        public IEnumerable<string> insertHotelRoom(string RoomID, string RoomNo, string RoomType, string Prize) {
             if (RoomNo == null)
                 RoomNo = "";
 
@@ -36,6 +37,16 @@ namespace MVCAngularHotelBooking.Controllers
 
             if (Prize == null)
                 Prize = "";
+
+            return db.USP_Hotel_Insert(Convert.ToInt32(RoomID), RoomNo, RoomType, Prize).AsEnumerable();
+        }
+
+        [HttpPost]
+        public IEnumerable<string> insertHotelRoom(JObject jObject) {
+            int RoomID = Convert.ToInt32(jObject["RoomID"] ?? 0);
+            string RoomNo = (jObject["RoomNo"] ?? "").ToString();
+            string RoomType = (jObject["RoomType"] ?? "").ToString();
+            string Prize = (jObject["Prize"] ?? "").ToString();
 
             return db.USP_Hotel_Insert(RoomID, RoomNo, RoomType, Prize).AsEnumerable();
         }
@@ -97,7 +108,7 @@ namespace MVCAngularHotelBooking.Controllers
         }
         // To Delete Music Details
         [HttpGet]
-        public IEnumerable<string> deleteROom(string BookingID) {
+        public IEnumerable<string> deleteRoomBooking(string BookingID) {
             if (BookingID == null)
                 BookingID = "0";
 
