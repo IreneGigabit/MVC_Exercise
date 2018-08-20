@@ -30,15 +30,6 @@ namespace MVCAngularHotelBooking
         public virtual DbSet<HotelMaster> HotelMasters { get; set; }
         public virtual DbSet<RoomBooking> RoomBookings { get; set; }
     
-        public virtual ObjectResult<USP_HotelMaster_Select_Result> USP_HotelMaster_Select(string roomNo)
-        {
-            var roomNoParameter = roomNo != null ?
-                new ObjectParameter("RoomNo", roomNo) :
-                new ObjectParameter("RoomNo", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_HotelMaster_Select_Result>("USP_HotelMaster_Select", roomNoParameter);
-        }
-    
         public virtual ObjectResult<USP_HotelStatus_Select_Result> USP_HotelStatus_Select(string roomNo)
         {
             var roomNoParameter = roomNo != null ?
@@ -103,6 +94,15 @@ namespace MVCAngularHotelBooking
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_RoomBooking_SelectALL_Result>("USP_RoomBooking_SelectALL", roomIDParameter);
         }
     
+        public virtual ObjectResult<string> USP_Hotel_Delete(Nullable<int> roomID)
+        {
+            var roomIDParameter = roomID.HasValue ?
+                new ObjectParameter("RoomID", roomID) :
+                new ObjectParameter("RoomID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("USP_Hotel_Delete", roomIDParameter);
+        }
+    
         public virtual ObjectResult<string> USP_Hotel_Insert(Nullable<int> roomID, string roomNo, string roomType, string prize)
         {
             var roomIDParameter = roomID.HasValue ?
@@ -122,6 +122,15 @@ namespace MVCAngularHotelBooking
                 new ObjectParameter("Prize", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("USP_Hotel_Insert", roomIDParameter, roomNoParameter, roomTypeParameter, prizeParameter);
+        }
+    
+        public virtual ObjectResult<USP_HotelMaster_Select_Result> USP_HotelMaster_Select(string roomNo)
+        {
+            var roomNoParameter = roomNo != null ?
+                new ObjectParameter("RoomNo", roomNo) :
+                new ObjectParameter("RoomNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_HotelMaster_Select_Result>("USP_HotelMaster_Select", roomNoParameter);
         }
     }
 }

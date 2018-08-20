@@ -4,17 +4,23 @@
 }
 
 @section style {
-<link href="~/Content/all.min.css" rel="stylesheet" />    <style>
-        .error {
-            color: #FF0000;
-        }
-        .readonly {
-            background-color:tan;
-        }
-        .action{
-            cursor:pointer;
-        }
-    </style>
+<style>
+    .error {
+        color: #FF0000;
+    }
+    .readonly {
+        background-color:tan;
+    }
+    .action{
+        cursor:pointer;
+    }
+</style>
+}
+
+@section scripts {
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-animate.min.js"></script>
+    <script src="~/Scripts/MyAngular/Controller.js"></script>
 }
 
 <div data-ng-app="AngularJs_Module" data-ng-controller="AngularJs_Controller">
@@ -32,67 +38,6 @@
             </div>
         </div>
     </div>
-
-    <div class="container-fluid mt-1 pt-1 pb-1 bg-info text-center">
-        <h3 class="text-light">Manage Room Booking Details Add/Edit and Delete Room Booking Details</h3>
-    </div>
-
-    <table>
-        <tr>
-            <td>Room Booking ID:</td>
-            <td><input type=text></td>
-            <td>Room No</td>
-            <td><input type=text></td>
-        </tr>
-        <tr>
-            <td>Booking From:</td>
-            <td><input type=text></td>
-            <td>Booking To:</td>
-            <td><input type=text></td>
-        </tr>
-        <tr>
-            <td>Booking Status:</td>
-            <td><input type=text></td>
-            <td>Room Paid:</td>
-            <td><input type=text></td>
-        </tr>
-        <tr>
-            <td>Advance Payed:</td>
-            <td><input type=text></td>
-            <td>Total Amount Payed:</td>
-            <td><input type=text></td>
-        </tr>
-    </table>
-    <input type="button" value="Save Room Booking Detail" />
-
-    <table>
-        <tr>
-            <td>BookingID</td>
-            <td>RoomID</td>
-            <td>Room No</td>
-            <td>BookedDateFR</td>
-            <td>BookedDateTO</td>
-            <td>BookingStatus</td>
-            <td>PaymentStatus</td>
-            <td>AdvancePayed</td>
-            <td>TotalAmountPayed</td>
-        </tr>
-        <tbody ng-repeat="details in RoomBookingData">
-            <tr>
-                <td>{{details.BookingID}}</td>
-                <td>{{details.RoomID}}</td>
-                <td>{{details.RoomNo}}</td>
-                <td>{{details.BookedDateFR}}</td>
-                <td>{{details.BookedDateTO}}</td>
-                <td>{{details.BookingStatus}}</td>
-                <td>{{details.PaymentStatus}}</td>
-                <td>{{details.AdvancePayed}}</td>
-                <td>{{details.TotalAmountPayed}}</td>
-            </tr>
-        </tbody>
-    </table>
-
-
 
     <div class="container-fluid mt-1 pt-1 pb-1 bg-success text-center">
         <h3 class="text-light">Manage Room Details</h3>
@@ -140,6 +85,7 @@
                     </tr>
                 </table>
             </form>
+            {{Message}}
         </div>
         <div class="col col-7 p-0">
             <table class="table table-bordered table-hover table-sm">
@@ -150,6 +96,7 @@
                         <th>Room No</th>
                         <th>Room Type</th>
                         <th>Room Price</th>
+                        <th>Flag</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -162,6 +109,7 @@
                         <td>{{details.RoomNo}}</td>
                         <td>{{details.RoomType}}</td>
                         <td>{{details.Prize}}</td>
+                        <td>{{details.Flag}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -171,8 +119,3 @@
 
 </div>
 
-@section scripts {
-    <script src="~/Scripts/angular.min.js"></script>
-    <script src="~/Scripts/angular-animate.min.js"></script>
-    <script src="~/Scripts/MyAngular/Controller.js"></script>
-}

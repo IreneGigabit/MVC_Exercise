@@ -2,6 +2,7 @@
 <html>
 <head>
     @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/CSS/FontAwesome")
     @RenderSection("style", required: false)
 </head>
 <body>
@@ -13,7 +14,7 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <li>@Html.ActionLink("Dashboard", "Index", "Home", new { area = "" }, new { @class = "nav-item nav-link" })</li>
-                <li>@Html.ActionLink("Room/Booking", "Index", "Room", new { area = "" }, new { @class = "nav-item nav-link" })</li>
+                <li>@Html.ActionLink("Booking", "Index", "Booking", new { area = "" }, new { @class = "nav-item nav-link" })</li>
             </div>
             @Html.Partial("_LoginPartial")
         </div>

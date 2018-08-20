@@ -27,7 +27,7 @@ namespace MVCAngularHotelBooking
                             "~/Content/bootstrap.css"
                             ));
             bundles.Add(new StyleBundle("~/CSS/FontAwesome").Include(
-                            "~/Content/fontawesome.min.css"
+                            "~/Content/all.min.css"
                             ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

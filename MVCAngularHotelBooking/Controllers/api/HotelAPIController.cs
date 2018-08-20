@@ -51,6 +51,53 @@ namespace MVCAngularHotelBooking.Controllers
             return db.USP_Hotel_Insert(RoomID, RoomNo, RoomType, Prize).AsEnumerable();
         }
 
+        [HttpPost]
+        public IEnumerable<string> modifyHotelRoom(JObject jObject) {
+            int RoomID = Convert.ToInt32(jObject["RoomID"] ?? 0);
+            string RoomNo = (jObject["RoomNo"] ?? "").ToString();
+            string RoomType = (jObject["RoomType"] ?? "").ToString();
+            string Prize = (jObject["Prize"] ?? "").ToString();
+
+            string msg = "";
+
+            var r = db.HotelMasters.Where(a => a.RoomNo == RoomNo && a.RoomID != RoomID).FirstOrDefault();
+            if (r != null) {
+                msg = "Error - 已有此房號!!";
+            } else {
+                if (RoomID == 0) {
+                    //Insert
+                    var Room = new HotelMaster();
+                    Room.RoomNo = RoomNo;
+                    Room.RoomType = RoomType;
+                    Room.Prize = Prize;
+                    Room.Flag = "A";
+                    db.HotelMasters.Add(Room);
+                    msg = "新增完成!!";
+                } else {
+                    //Update
+                    var v = db.HotelMasters.Where(a => a.RoomID == RoomID).FirstOrDefault();
+                    if (v != null) {
+                        v.RoomNo = RoomNo;
+                        v.RoomType = RoomType;
+                        v.Prize = Prize;
+                        v.Flag = "U";
+                        msg = "更新完成!!";
+                    } else {
+                        msg = "Error - 查無此ID!!";
+                    }
+                }
+                db.SaveChanges();
+            }
+
+            return new string[] { msg };
+        }
+
+        [HttpPost]
+        public IEnumerable<string> deleteHotelRoom(JObject jObject) {
+            int RoomID = Convert.ToInt32(jObject["RoomID"] ?? 0);
+            return db.USP_Hotel_Delete(RoomID).AsEnumerable();
+        }
+
         // to Search all Room Booking Details
         [HttpGet]
         public IEnumerable<USP_RoomBooking_SelectALL_Result> getRoomBookingDetails(string RoomID) {

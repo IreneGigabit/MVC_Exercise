@@ -17,5 +17,6 @@ namespace MVCAngularHotelBooking
         public string RoomNo { get; set; }
         public string RoomType { get; set; }
         public string Prize { get; set; }
+        public string flag { get; set; }
     }
 }

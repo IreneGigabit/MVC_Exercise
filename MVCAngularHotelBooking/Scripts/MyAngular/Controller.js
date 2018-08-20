@@ -34,7 +34,7 @@ app.controller("AngularJs_Controller", function ($scope, $timeout, $rootScope, $
     selectAvailableStatus('');
 
     function selectRoomDetails(RoomNo) {
-        $http.get('/api/HotelAPI/getHotelRooms/', {
+        $http.get('/Room/getHotelRooms/', {
             params: { RoomNo: RoomNo }
         })
         .then(function successCallback(response) {
@@ -42,7 +42,7 @@ app.controller("AngularJs_Controller", function ($scope, $timeout, $rootScope, $
             if ($scope.HotelRoomData.length > 0) {
             }
         }, function errorCallback() {
-            $scope.error = "An Error has occured while loading posts!";
+            $scope.Message = "An Error has occured while loading posts!";
         });
     }
 
@@ -55,7 +55,7 @@ app.controller("AngularJs_Controller", function ($scope, $timeout, $rootScope, $
             if ($scope.RoomBookingData.length > 0) {
             }
         }, function errorCallback() {
-            $scope.error = "An Error has occured while loading posts!";
+            $scope.Message = "An Error has occured while loading posts!";
         });
     }
 
@@ -68,7 +68,7 @@ app.controller("AngularJs_Controller", function ($scope, $timeout, $rootScope, $
             if ($scope.RoomAvailableData.length > 0) {
             }
         }, function errorCallback() {
-            $scope.error = "An Error has occured while loading posts!";
+            $scope.Message = "An Error has occured while loading posts!";
         });
     }
 
@@ -86,60 +86,7 @@ app.controller("AngularJs_Controller", function ($scope, $timeout, $rootScope, $
         $scope.Prize = $scope.HotelRoomData[idx].Prize;
     }
 
-    //saveRoom(Post)
-    $scope.saveRoom = function () {
-        $scope.IsFormSubmitted2 = true;
-        $scope.Message = "";
-        if ($scope.f2.$valid) {//同$scope.$watch("f2.$valid")
-            $http.post('/api/HotelAPI/insertHotelRoom/', {
-                 RoomID: $scope.RoomID, RoomNo: $scope.RoomNo, RoomType: $scope.RoomType, Prize: $scope.Prize 
-            })
-            .then(function successCallback(response) {
-                $scope.roomInserted = response.data;
-                alert($scope.roomInserted);
-                cleardetails();
-                selectRoomDetails('');
-            }, function errorCallback() {
-                $scope.error = "An Error has occured while loading posts!";
-            });
-        }
-        else {
-            $scope.Message = "All the fields are required.";
-        }
-    };
-
-    //saveRoom(Get)
-    $scope.saveRoomGet = function () {
-        $scope.IsFormSubmitted2 = true;
-        $scope.Message = "";
-        if ($scope.f2.$valid) {//同$scope.$watch("f2.$valid")
-            $http.get('/api/HotelAPI/insertHotelRoom/', {
-                params: { RoomID: $scope.RoomID, RoomNo: $scope.RoomNo, RoomType: $scope.RoomType, Prize: $scope.Prize }
-            })
-            .then(function successCallback(response) {
-                $scope.roomInserted = response.data;
-                alert($scope.roomInserted);
-                cleardetails();
-                selectRoomDetails('');
-            }, function errorCallback() {
-                $scope.error = "An Error has occured while loading posts!";
-            });
-        }
-        else {
-            $scope.Message = "All the fields are required.";
-        }
-    };
-
-
-    //delRoom
-    $scope.modiRoom = function (idx) {
-        $scope.RoomID = $scope.HotelRoomData[idx].RoomID;
-        $scope.RoomNo = $scope.HotelRoomData[idx].RoomNo;
-        $scope.RoomType = $scope.HotelRoomData[idx].RoomType;
-        $scope.Prize = $scope.HotelRoomData[idx].Prize;
-    }
-
-    //
+    //Clean modify form
     function cleardetails() {
         $scope.RoomID = 0;
         $scope.RoomNo = "";
@@ -147,6 +94,51 @@ app.controller("AngularJs_Controller", function ($scope, $timeout, $rootScope, $
         $scope.Prize = "";
 
         $scope.IsFormSubmitted2 = false;
+    }
+
+    //saveRoom(Post)
+    $scope.saveRoom = function () {
+        $scope.IsFormSubmitted2 = true;
+        $scope.Message = "";
+        if ($scope.f2.$valid) {//同$scope.$watch("f2.$valid")
+            $http.post('/Room/modifyHotelRoom/'
+                , $.param({ RoomID: $scope.RoomID, RoomNo: $scope.RoomNo, RoomType: $scope.RoomType, Prize: $scope.Prize })
+                , { headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;' } }
+            )
+            .then(function successCallback(response) {
+                $scope.Message = response.data[0];
+                cleardetails();
+                selectRoomDetails('');
+            }, function errorCallback() {
+                $scope.Message = "An Error has occured while loading posts!";
+            });
+        }
+        else {
+            $scope.Message = "All the fields are required.";
+        }
+    };
+
+    //delRoom
+    $scope.delRoom = function (idx) {
+        $scope.RoomID = $scope.HotelRoomData[idx].RoomID;
+        $scope.RoomNo = $scope.HotelRoomData[idx].RoomNo;
+
+        if (confirm("RoomNo:" + $scope.RoomNo + ",確定刪除嗎?")) {
+            $scope.IsFormSubmitted2 = true;
+            $scope.Message = "";
+
+            $http.post('/Room/deleteHotelRoom/'
+                , $.param({ RoomID: $scope.RoomID })
+                , { headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;' } }
+            )
+            .then(function successCallback(response) {
+                $scope.Message = response.data[0];
+                cleardetails();
+                selectRoomDetails('');
+            }, function errorCallback() {
+                $scope.Message = "An Error has occured while loading posts!";
+            });
+        }
     }
 
 })
