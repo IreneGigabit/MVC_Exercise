@@ -262,6 +262,12 @@
     <Compile Include="USP_RoomBooking_SelectALL_Result.cs">
       <DependentUpon>HotelModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ValueSet.cs">
+      <DependentUpon>HotelModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ValueSetKind.cs">
+      <DependentUpon>HotelModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\HotelDB.mdf" />

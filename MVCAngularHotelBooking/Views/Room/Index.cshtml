@@ -63,13 +63,10 @@
                         <td>
                             <select name="optRoomType" id="optRoomType" ng-model="RoomType" required>
                                 <option value="" selected>-- Select --</option>
-                                <option value="Single">Single</option>
-                                <option value="Double">Double</option>
-                                <option value="Twin">Twin</option>
-                                <option value="Duplex">Duplex</option>
-                                <option value="Suite">Suite</option>
+                                <option ng-repeat="t in RoomTypeData" value="{{t.VLS_CODE}}">{{t.VLS_CODE}}_{{t.VLS_NAME}}{{t.ATTRIBUTE1|myFilter}}</option>
                             </select>
                             <span class="error" ng-show="(f2.optRoomType.$dirty || IsFormSubmitted2) && f2.optRoomType.$error.required">Room Type required!</span>
+                            <br /><room-type room-type-data="RoomTypeData"></room-type>
                         </td>
                     </tr>
                     <tr>

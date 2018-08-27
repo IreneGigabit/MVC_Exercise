@@ -15,7 +15,7 @@ namespace MVCAngularHotelBooking
     public partial class RoomBooking
     {
         public int BookingID { get; set; }
-        public Nullable<int> RoomID { get; set; }
+        public int RoomID { get; set; }
         public string BookedDateFR { get; set; }
         public string BookedDateTO { get; set; }
         public string BookingStatus { get; set; }

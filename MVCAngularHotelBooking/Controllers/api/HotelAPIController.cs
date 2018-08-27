@@ -162,5 +162,22 @@ namespace MVCAngularHotelBooking.Controllers
             return db.USP_RoomBooking_Delete(BookingID).AsEnumerable();
 
         }
+
+        //取得valueSet
+        [HttpGet]
+        public IEnumerable<ValueSet> getValueSets(string VLK_CODE) {
+            if (VLK_CODE == null)
+                VLK_CODE = "";
+            List<ValueSet> valueSet = new List<ValueSet>();
+
+            using (HotelDBEntities db = new HotelDBEntities()) {
+                if (VLK_CODE != "") {
+                    valueSet = db.ValueSets.Where(a => a.VLK_CODE == VLK_CODE && a.FLAG != "D").ToList();
+                }
+            }
+
+            return valueSet.AsEnumerable();
+        }
+
     }
 }

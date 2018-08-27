@@ -20,13 +20,70 @@
             <PropertyRef Name="BookingID" />
           </Key>
           <Property Name="BookingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RoomID" Type="int" />
+          <Property Name="RoomID" Type="int" Nullable="false" />
           <Property Name="BookedDateFR" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="BookedDateTO" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="BookingStatus" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="PaymentStatus" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="AdvancePayed" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="TotalAmountPayed" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ValueSet">
+          <Key>
+            <PropertyRef Name="VLK_CODE" />
+            <PropertyRef Name="VLS_CODE" />
+          </Key>
+          <Property Name="VLS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VLK_CODE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="VLS_CODE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="VLS_NAME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SORT" Type="int" Nullable="false" />
+          <Property Name="FLAG" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="IN_DATE" Type="datetime" Nullable="false" />
+          <Property Name="TRAN_DATE" Type="datetime" />
+          <Property Name="END_DATE" Type="datetime" />
+          <Property Name="ATTRIBUTE1" Type="varchar" MaxLength="50" />
+          <Property Name="ATTRIBUTE2" Type="varchar" MaxLength="50" />
+          <Property Name="ATTRIBUTE3" Type="varchar" MaxLength="50" />
+          <Property Name="ATTRIBUTE4" Type="varchar" MaxLength="50" />
+          <Property Name="ATTRIBUTE5" Type="varchar" MaxLength="50" />
+          <Property Name="ATTRIBUTE6" Type="varchar" MaxLength="50" />
+          <Property Name="ATTRIBUTE7" Type="varchar" MaxLength="50" />
+          <Property Name="ATTRIBUTE8" Type="varchar" MaxLength="50" />
+          <Property Name="ATTRIBUTE9" Type="varchar" MaxLength="50" />
+          <Property Name="ATTRIBUTE10" Type="varchar" MaxLength="50" />
+          <Property Name="ATTRIBUTE11" Type="varchar" MaxLength="50" />
+          <Property Name="ATTRIBUTE12" Type="varchar" MaxLength="50" />
+          <Property Name="ATTRIBUTE13" Type="varchar" MaxLength="50" />
+          <Property Name="ATTRIBUTE14" Type="varchar" MaxLength="50" />
+          <Property Name="ATTRIBUTE15" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ValueSetKind">
+          <Key>
+            <PropertyRef Name="VLK_CODE" />
+          </Key>
+          <Property Name="VLK_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VLK_CODE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="VLK_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FLAG" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="IN_DATE" Type="datetime" Nullable="false" />
+          <Property Name="TRAN_DATE" Type="datetime" />
+          <Property Name="END_DATE" Type="datetime" />
+          <Property Name="ATTRIBUTE1" Type="varchar" MaxLength="50" />
+          <Property Name="ATTRIBUTE2" Type="varchar" MaxLength="50" />
+          <Property Name="ATTRIBUTE3" Type="varchar" MaxLength="50" />
+          <Property Name="ATTRIBUTE4" Type="varchar" MaxLength="50" />
+          <Property Name="ATTRIBUTE5" Type="varchar" MaxLength="50" />
+          <Property Name="ATTRIBUTE6" Type="varchar" MaxLength="50" />
+          <Property Name="ATTRIBUTE7" Type="varchar" MaxLength="50" />
+          <Property Name="ATTRIBUTE8" Type="varchar" MaxLength="50" />
+          <Property Name="ATTRIBUTE9" Type="varchar" MaxLength="50" />
+          <Property Name="ATTRIBUTE10" Type="varchar" MaxLength="50" />
+          <Property Name="ATTRIBUTE11" Type="varchar" MaxLength="50" />
+          <Property Name="ATTRIBUTE12" Type="varchar" MaxLength="50" />
+          <Property Name="ATTRIBUTE13" Type="varchar" MaxLength="50" />
+          <Property Name="ATTRIBUTE14" Type="varchar" MaxLength="50" />
+          <Property Name="ATTRIBUTE15" Type="varchar" MaxLength="50" />
         </EntityType>
         <Function Name="USP_Hotel_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="RoomID" Type="int" Mode="In" />
@@ -62,6 +119,8 @@
         <EntityContainer Name="HotelDBModelStoreContainer">
           <EntitySet Name="HotelMaster" EntityType="Self.HotelMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoomBooking" EntityType="Self.RoomBooking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ValueSet" EntityType="Self.ValueSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ValueSetKind" EntityType="Self.ValueSetKind" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -82,7 +141,7 @@
             <PropertyRef Name="BookingID" />
           </Key>
           <Property Name="BookingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RoomID" Type="Int32" />
+          <Property Name="RoomID" Type="Int32" Nullable="false" />
           <Property Name="BookedDateFR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="BookedDateTO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="BookingStatus" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
@@ -122,8 +181,10 @@
             <Parameter Name="Prize" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="USP_HotelMaster_Select" ReturnType="Collection(HotelDBModel.USP_HotelMaster_Select_Result)">
-            <Parameter Name="RoomNo" Mode="In" Type="String" />
+          <Parameter Name="RoomNo" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="ValueSets" EntityType="HotelDBModel.ValueSet" />
+          <EntitySet Name="ValueSetKinds" EntityType="HotelDBModel.ValueSetKind" />
         </EntityContainer>
         <ComplexType Name="USP_HotelStatus_Select_Result">
           <Property Type="String" Name="RoomNo" Nullable="false" MaxLength="100" />
@@ -152,6 +213,63 @@
           <Property Type="String" Name="Prize" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="flag" Nullable="false" MaxLength="1" />
         </ComplexType>
+        <EntityType Name="ValueSet">
+          <Key>
+            <PropertyRef Name="VLK_CODE" />
+            <PropertyRef Name="VLS_CODE" />
+          </Key>
+          <Property Name="VLS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VLK_CODE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="VLS_CODE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="VLS_NAME" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SORT" Type="Int32" Nullable="false" />
+          <Property Name="FLAG" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="IN_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TRAN_DATE" Type="DateTime" Precision="3" />
+          <Property Name="END_DATE" Type="DateTime" Precision="3" />
+          <Property Name="ATTRIBUTE1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE9" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE10" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE11" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE12" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE13" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE14" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE15" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ValueSetKind">
+          <Key>
+            <PropertyRef Name="VLK_CODE" />
+          </Key>
+          <Property Name="VLK_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VLK_CODE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="VLK_NAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FLAG" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="IN_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TRAN_DATE" Type="DateTime" Precision="3" />
+          <Property Name="END_DATE" Type="DateTime" Precision="3" />
+          <Property Name="ATTRIBUTE1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE9" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE10" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE11" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE12" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE13" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE14" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTRIBUTE15" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -226,6 +344,64 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="ValueSets">
+            <EntityTypeMapping TypeName="HotelDBModel.ValueSet">
+              <MappingFragment StoreEntitySet="ValueSet">
+                <ScalarProperty Name="ATTRIBUTE15" ColumnName="ATTRIBUTE15" />
+                <ScalarProperty Name="ATTRIBUTE14" ColumnName="ATTRIBUTE14" />
+                <ScalarProperty Name="ATTRIBUTE13" ColumnName="ATTRIBUTE13" />
+                <ScalarProperty Name="ATTRIBUTE12" ColumnName="ATTRIBUTE12" />
+                <ScalarProperty Name="ATTRIBUTE11" ColumnName="ATTRIBUTE11" />
+                <ScalarProperty Name="ATTRIBUTE10" ColumnName="ATTRIBUTE10" />
+                <ScalarProperty Name="ATTRIBUTE9" ColumnName="ATTRIBUTE9" />
+                <ScalarProperty Name="ATTRIBUTE8" ColumnName="ATTRIBUTE8" />
+                <ScalarProperty Name="ATTRIBUTE7" ColumnName="ATTRIBUTE7" />
+                <ScalarProperty Name="ATTRIBUTE6" ColumnName="ATTRIBUTE6" />
+                <ScalarProperty Name="ATTRIBUTE5" ColumnName="ATTRIBUTE5" />
+                <ScalarProperty Name="ATTRIBUTE4" ColumnName="ATTRIBUTE4" />
+                <ScalarProperty Name="ATTRIBUTE3" ColumnName="ATTRIBUTE3" />
+                <ScalarProperty Name="ATTRIBUTE2" ColumnName="ATTRIBUTE2" />
+                <ScalarProperty Name="ATTRIBUTE1" ColumnName="ATTRIBUTE1" />
+                <ScalarProperty Name="END_DATE" ColumnName="END_DATE" />
+                <ScalarProperty Name="TRAN_DATE" ColumnName="TRAN_DATE" />
+                <ScalarProperty Name="IN_DATE" ColumnName="IN_DATE" />
+                <ScalarProperty Name="FLAG" ColumnName="FLAG" />
+                <ScalarProperty Name="SORT" ColumnName="SORT" />
+                <ScalarProperty Name="VLS_NAME" ColumnName="VLS_NAME" />
+                <ScalarProperty Name="VLS_CODE" ColumnName="VLS_CODE" />
+                <ScalarProperty Name="VLK_CODE" ColumnName="VLK_CODE" />
+                <ScalarProperty Name="VLS_ID" ColumnName="VLS_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ValueSetKinds">
+            <EntityTypeMapping TypeName="HotelDBModel.ValueSetKind">
+              <MappingFragment StoreEntitySet="ValueSetKind">
+                <ScalarProperty Name="ATTRIBUTE15" ColumnName="ATTRIBUTE15" />
+                <ScalarProperty Name="ATTRIBUTE14" ColumnName="ATTRIBUTE14" />
+                <ScalarProperty Name="ATTRIBUTE13" ColumnName="ATTRIBUTE13" />
+                <ScalarProperty Name="ATTRIBUTE12" ColumnName="ATTRIBUTE12" />
+                <ScalarProperty Name="ATTRIBUTE11" ColumnName="ATTRIBUTE11" />
+                <ScalarProperty Name="ATTRIBUTE10" ColumnName="ATTRIBUTE10" />
+                <ScalarProperty Name="ATTRIBUTE9" ColumnName="ATTRIBUTE9" />
+                <ScalarProperty Name="ATTRIBUTE8" ColumnName="ATTRIBUTE8" />
+                <ScalarProperty Name="ATTRIBUTE7" ColumnName="ATTRIBUTE7" />
+                <ScalarProperty Name="ATTRIBUTE6" ColumnName="ATTRIBUTE6" />
+                <ScalarProperty Name="ATTRIBUTE5" ColumnName="ATTRIBUTE5" />
+                <ScalarProperty Name="ATTRIBUTE4" ColumnName="ATTRIBUTE4" />
+                <ScalarProperty Name="ATTRIBUTE3" ColumnName="ATTRIBUTE3" />
+                <ScalarProperty Name="ATTRIBUTE2" ColumnName="ATTRIBUTE2" />
+                <ScalarProperty Name="ATTRIBUTE1" ColumnName="ATTRIBUTE1" />
+                <ScalarProperty Name="END_DATE" ColumnName="END_DATE" />
+                <ScalarProperty Name="TRAN_DATE" ColumnName="TRAN_DATE" />
+                <ScalarProperty Name="IN_DATE" ColumnName="IN_DATE" />
+                <ScalarProperty Name="FLAG" ColumnName="FLAG" />
+                <ScalarProperty Name="VLK_NAME" ColumnName="VLK_NAME" />
+                <ScalarProperty Name="VLK_CODE" ColumnName="VLK_CODE" />
+                <ScalarProperty Name="VLK_ID" ColumnName="VLK_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

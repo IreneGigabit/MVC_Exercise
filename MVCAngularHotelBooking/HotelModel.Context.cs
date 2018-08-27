@@ -29,6 +29,8 @@ namespace MVCAngularHotelBooking
     
         public virtual DbSet<HotelMaster> HotelMasters { get; set; }
         public virtual DbSet<RoomBooking> RoomBookings { get; set; }
+        public virtual DbSet<ValueSet> ValueSets { get; set; }
+        public virtual DbSet<ValueSetKind> ValueSetKinds { get; set; }
     
         public virtual ObjectResult<USP_HotelStatus_Select_Result> USP_HotelStatus_Select(string roomNo)
         {

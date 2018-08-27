@@ -15,7 +15,7 @@
       <PropertyRef Name="BookingID" />
     </Key>
     <Property Name="BookingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="RoomID" Type="Int32" />
+    <Property Name="RoomID" Type="Int32" Nullable="false" />
     <Property Name="BookedDateFR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="BookedDateTO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="BookingStatus" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
@@ -57,6 +57,8 @@
     <FunctionImport Name="USP_HotelMaster_Select" ReturnType="Collection(HotelDBModel.USP_HotelMaster_Select_Result)">
       <Parameter Name="RoomNo" Mode="In" Type="String" />
     </FunctionImport>
+    <EntitySet Name="ValueSets" EntityType="HotelDBModel.ValueSet" />
+    <EntitySet Name="ValueSetKinds" EntityType="HotelDBModel.ValueSetKind" />
   </EntityContainer>
   <ComplexType Name="USP_HotelStatus_Select_Result">
     <Property Type="String" Name="RoomNo" Nullable="false" MaxLength="100" />
@@ -85,4 +87,61 @@
     <Property Type="String" Name="Prize" Nullable="false" MaxLength="100" />
     <Property Type="String" Name="flag" Nullable="false" MaxLength="1" />
   </ComplexType>
+  <EntityType Name="ValueSet">
+    <Key>
+      <PropertyRef Name="VLK_CODE" />
+      <PropertyRef Name="VLS_CODE" />
+    </Key>
+    <Property Name="VLS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VLK_CODE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="VLS_CODE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="VLS_NAME" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SORT" Type="Int32" Nullable="false" />
+    <Property Name="FLAG" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="IN_DATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TRAN_DATE" Type="DateTime" Precision="3" />
+    <Property Name="END_DATE" Type="DateTime" Precision="3" />
+    <Property Name="ATTRIBUTE1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ATTRIBUTE2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ATTRIBUTE3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ATTRIBUTE4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ATTRIBUTE5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ATTRIBUTE6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ATTRIBUTE7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ATTRIBUTE8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ATTRIBUTE9" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ATTRIBUTE10" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ATTRIBUTE11" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ATTRIBUTE12" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ATTRIBUTE13" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ATTRIBUTE14" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ATTRIBUTE15" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ValueSetKind">
+    <Key>
+      <PropertyRef Name="VLK_CODE" />
+    </Key>
+    <Property Name="VLK_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VLK_CODE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="VLK_NAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FLAG" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="IN_DATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TRAN_DATE" Type="DateTime" Precision="3" />
+    <Property Name="END_DATE" Type="DateTime" Precision="3" />
+    <Property Name="ATTRIBUTE1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ATTRIBUTE2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ATTRIBUTE3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ATTRIBUTE4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ATTRIBUTE5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ATTRIBUTE6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ATTRIBUTE7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ATTRIBUTE8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ATTRIBUTE9" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ATTRIBUTE10" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ATTRIBUTE11" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ATTRIBUTE12" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ATTRIBUTE13" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ATTRIBUTE14" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ATTRIBUTE15" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

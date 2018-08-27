@@ -69,5 +69,63 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="ValueSets">
+      <EntityTypeMapping TypeName="HotelDBModel.ValueSet">
+        <MappingFragment StoreEntitySet="ValueSet">
+          <ScalarProperty Name="ATTRIBUTE15" ColumnName="ATTRIBUTE15" />
+          <ScalarProperty Name="ATTRIBUTE14" ColumnName="ATTRIBUTE14" />
+          <ScalarProperty Name="ATTRIBUTE13" ColumnName="ATTRIBUTE13" />
+          <ScalarProperty Name="ATTRIBUTE12" ColumnName="ATTRIBUTE12" />
+          <ScalarProperty Name="ATTRIBUTE11" ColumnName="ATTRIBUTE11" />
+          <ScalarProperty Name="ATTRIBUTE10" ColumnName="ATTRIBUTE10" />
+          <ScalarProperty Name="ATTRIBUTE9" ColumnName="ATTRIBUTE9" />
+          <ScalarProperty Name="ATTRIBUTE8" ColumnName="ATTRIBUTE8" />
+          <ScalarProperty Name="ATTRIBUTE7" ColumnName="ATTRIBUTE7" />
+          <ScalarProperty Name="ATTRIBUTE6" ColumnName="ATTRIBUTE6" />
+          <ScalarProperty Name="ATTRIBUTE5" ColumnName="ATTRIBUTE5" />
+          <ScalarProperty Name="ATTRIBUTE4" ColumnName="ATTRIBUTE4" />
+          <ScalarProperty Name="ATTRIBUTE3" ColumnName="ATTRIBUTE3" />
+          <ScalarProperty Name="ATTRIBUTE2" ColumnName="ATTRIBUTE2" />
+          <ScalarProperty Name="ATTRIBUTE1" ColumnName="ATTRIBUTE1" />
+          <ScalarProperty Name="END_DATE" ColumnName="END_DATE" />
+          <ScalarProperty Name="TRAN_DATE" ColumnName="TRAN_DATE" />
+          <ScalarProperty Name="IN_DATE" ColumnName="IN_DATE" />
+          <ScalarProperty Name="FLAG" ColumnName="FLAG" />
+          <ScalarProperty Name="SORT" ColumnName="SORT" />
+          <ScalarProperty Name="VLS_NAME" ColumnName="VLS_NAME" />
+          <ScalarProperty Name="VLS_CODE" ColumnName="VLS_CODE" />
+          <ScalarProperty Name="VLK_CODE" ColumnName="VLK_CODE" />
+          <ScalarProperty Name="VLS_ID" ColumnName="VLS_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ValueSetKinds">
+      <EntityTypeMapping TypeName="HotelDBModel.ValueSetKind">
+        <MappingFragment StoreEntitySet="ValueSetKind">
+          <ScalarProperty Name="ATTRIBUTE15" ColumnName="ATTRIBUTE15" />
+          <ScalarProperty Name="ATTRIBUTE14" ColumnName="ATTRIBUTE14" />
+          <ScalarProperty Name="ATTRIBUTE13" ColumnName="ATTRIBUTE13" />
+          <ScalarProperty Name="ATTRIBUTE12" ColumnName="ATTRIBUTE12" />
+          <ScalarProperty Name="ATTRIBUTE11" ColumnName="ATTRIBUTE11" />
+          <ScalarProperty Name="ATTRIBUTE10" ColumnName="ATTRIBUTE10" />
+          <ScalarProperty Name="ATTRIBUTE9" ColumnName="ATTRIBUTE9" />
+          <ScalarProperty Name="ATTRIBUTE8" ColumnName="ATTRIBUTE8" />
+          <ScalarProperty Name="ATTRIBUTE7" ColumnName="ATTRIBUTE7" />
+          <ScalarProperty Name="ATTRIBUTE6" ColumnName="ATTRIBUTE6" />
+          <ScalarProperty Name="ATTRIBUTE5" ColumnName="ATTRIBUTE5" />
+          <ScalarProperty Name="ATTRIBUTE4" ColumnName="ATTRIBUTE4" />
+          <ScalarProperty Name="ATTRIBUTE3" ColumnName="ATTRIBUTE3" />
+          <ScalarProperty Name="ATTRIBUTE2" ColumnName="ATTRIBUTE2" />
+          <ScalarProperty Name="ATTRIBUTE1" ColumnName="ATTRIBUTE1" />
+          <ScalarProperty Name="END_DATE" ColumnName="END_DATE" />
+          <ScalarProperty Name="TRAN_DATE" ColumnName="TRAN_DATE" />
+          <ScalarProperty Name="IN_DATE" ColumnName="IN_DATE" />
+          <ScalarProperty Name="FLAG" ColumnName="FLAG" />
+          <ScalarProperty Name="VLK_NAME" ColumnName="VLK_NAME" />
+          <ScalarProperty Name="VLK_CODE" ColumnName="VLK_CODE" />
+          <ScalarProperty Name="VLK_ID" ColumnName="VLK_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -15,13 +15,70 @@
       <PropertyRef Name="BookingID" />
     </Key>
     <Property Name="BookingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="RoomID" Type="int" />
+    <Property Name="RoomID" Type="int" Nullable="false" />
     <Property Name="BookedDateFR" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="BookedDateTO" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="BookingStatus" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="PaymentStatus" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="AdvancePayed" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="TotalAmountPayed" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ValueSet">
+    <Key>
+      <PropertyRef Name="VLK_CODE" />
+      <PropertyRef Name="VLS_CODE" />
+    </Key>
+    <Property Name="VLS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VLK_CODE" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="VLS_CODE" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="VLS_NAME" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="SORT" Type="int" Nullable="false" />
+    <Property Name="FLAG" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="IN_DATE" Type="datetime" Nullable="false" />
+    <Property Name="TRAN_DATE" Type="datetime" />
+    <Property Name="END_DATE" Type="datetime" />
+    <Property Name="ATTRIBUTE1" Type="varchar" MaxLength="50" />
+    <Property Name="ATTRIBUTE2" Type="varchar" MaxLength="50" />
+    <Property Name="ATTRIBUTE3" Type="varchar" MaxLength="50" />
+    <Property Name="ATTRIBUTE4" Type="varchar" MaxLength="50" />
+    <Property Name="ATTRIBUTE5" Type="varchar" MaxLength="50" />
+    <Property Name="ATTRIBUTE6" Type="varchar" MaxLength="50" />
+    <Property Name="ATTRIBUTE7" Type="varchar" MaxLength="50" />
+    <Property Name="ATTRIBUTE8" Type="varchar" MaxLength="50" />
+    <Property Name="ATTRIBUTE9" Type="varchar" MaxLength="50" />
+    <Property Name="ATTRIBUTE10" Type="varchar" MaxLength="50" />
+    <Property Name="ATTRIBUTE11" Type="varchar" MaxLength="50" />
+    <Property Name="ATTRIBUTE12" Type="varchar" MaxLength="50" />
+    <Property Name="ATTRIBUTE13" Type="varchar" MaxLength="50" />
+    <Property Name="ATTRIBUTE14" Type="varchar" MaxLength="50" />
+    <Property Name="ATTRIBUTE15" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ValueSetKind">
+    <Key>
+      <PropertyRef Name="VLK_CODE" />
+    </Key>
+    <Property Name="VLK_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VLK_CODE" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="VLK_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FLAG" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="IN_DATE" Type="datetime" Nullable="false" />
+    <Property Name="TRAN_DATE" Type="datetime" />
+    <Property Name="END_DATE" Type="datetime" />
+    <Property Name="ATTRIBUTE1" Type="varchar" MaxLength="50" />
+    <Property Name="ATTRIBUTE2" Type="varchar" MaxLength="50" />
+    <Property Name="ATTRIBUTE3" Type="varchar" MaxLength="50" />
+    <Property Name="ATTRIBUTE4" Type="varchar" MaxLength="50" />
+    <Property Name="ATTRIBUTE5" Type="varchar" MaxLength="50" />
+    <Property Name="ATTRIBUTE6" Type="varchar" MaxLength="50" />
+    <Property Name="ATTRIBUTE7" Type="varchar" MaxLength="50" />
+    <Property Name="ATTRIBUTE8" Type="varchar" MaxLength="50" />
+    <Property Name="ATTRIBUTE9" Type="varchar" MaxLength="50" />
+    <Property Name="ATTRIBUTE10" Type="varchar" MaxLength="50" />
+    <Property Name="ATTRIBUTE11" Type="varchar" MaxLength="50" />
+    <Property Name="ATTRIBUTE12" Type="varchar" MaxLength="50" />
+    <Property Name="ATTRIBUTE13" Type="varchar" MaxLength="50" />
+    <Property Name="ATTRIBUTE14" Type="varchar" MaxLength="50" />
+    <Property Name="ATTRIBUTE15" Type="varchar" MaxLength="50" />
   </EntityType>
   <Function Name="USP_Hotel_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="RoomID" Type="int" Mode="In" />
@@ -57,5 +114,7 @@
   <EntityContainer Name="HotelDBModelStoreContainer">
     <EntitySet Name="HotelMaster" EntityType="Self.HotelMaster" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RoomBooking" EntityType="Self.RoomBooking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ValueSet" EntityType="Self.ValueSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ValueSetKind" EntityType="Self.ValueSetKind" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>
