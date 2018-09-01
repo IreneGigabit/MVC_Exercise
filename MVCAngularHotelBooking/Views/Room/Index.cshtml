@@ -23,7 +23,7 @@
     <script src="~/Scripts/MyAngular/Controller.js"></script>
 }
 
-<div data-ng-app="AngularJs_Module" data-ng-controller="AngularJs_Controller">
+<div ng-app="AngularJs_Module" ng-controller="AngularJs_Controller">
 
     <div class="container-fluid pt-3 border-primary border-bottom-3">
         <div class="row">
@@ -61,7 +61,7 @@
                     <tr>
                         <td>Room Type:</td>
                         <td>
-                            <select name="optRoomType" id="optRoomType" ng-model="RoomType" required>
+                            <select name="optRoomType" id="optRoomType" ng-model="RoomType" required ng-click="trest()">
                                 <option value="" selected>-- Select --</option>
                                 <option ng-repeat="t in RoomTypeData" value="{{t.VLS_CODE}}">{{t.VLS_CODE}}_{{t.VLS_NAME}}{{t.ATTRIBUTE1|myFilter}}</option>
                             </select>

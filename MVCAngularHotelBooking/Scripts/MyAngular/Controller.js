@@ -51,7 +51,7 @@ app.directive('roomType', function () {//須駝峰式命名法.tag名則用-分�
         },
         controller: ['$scope', function ($scope) {
             //
-            //    var vm = this;
+            var vm = this;
             //
             //    // 點選 Address 
             //    vm.clickAddress = function () {
@@ -65,22 +65,26 @@ app.directive('roomType', function () {//須駝峰式命名法.tag名則用-分�
             //
             //    }
             //
+                vm.test = function () {
+                    alert("test");
+                }
+            //vm.mainctrl.test=vm.test;
         }],
-        //template: '<h1>12345{{bar}}</h1>',
-        template:'<select name="selRoomType" id="selRoomType"  required>'+
+        template: '<select name="selRoomType" id="selRoomType" required ng-click="vm.test()">' +
                 '<option value="" selected>-- Select --</option>'+
-                ' <option ng-repeat="t in roomTypeData" value="{{t.VLS_CODE}}">{{t.VLS_CODE}}_{{t.VLS_NAME}}{{t.ATTRIBUTE1|myFilter}}</option>' +
+                ' <option ng-repeat="t in vm.roomTypeData" value="{{t.VLS_CODE}}">{{t.VLS_CODE}}_{{t.VLS_NAME}}{{t.ATTRIBUTE1|myFilter}}</option>' +
                 '</select>',
 
         // Ensure that properties are bound to the controller instead of the scope. (Angular 1.3+)
-        //bindToController: true,
+        bindToController: true,
         controllerAs: 'vm',
         //
         //// DOM manipulation
-        //link: function (scope, element, attrs, ctrls) {  
-        //    scope.vm.form = ctrls[0];      // 提供 ngMessages 使用 form 來呈現錯誤訊息
-        //    scope.vm.mainctrl = ctrls[1];  // 使用此 directive 的主要 Controller (滿足跨Directive互動需求)
-        //}
+        link: function (scope, element, attrs, ctrls) {  
+            scope.vm.form = ctrls[0];      // 提供 ngMessages 使用 form 來呈現錯誤訊息
+            scope.vm.mainctrl = ctrls[1];  // 使用此 directive 的主要 Controller (滿足跨Directive互動需求)
+            scope.vm.test = test;
+        }
     };
 });
 
@@ -109,6 +113,8 @@ app.controller("AngularJs_Controller", function ($scope, $timeout, $rootScope, $
     selectRoomBookingDetails('');
     selectAvailableStatus('');
     selectValueSets('RoomType');
+
+
 
     function selectValueSets(VLK_CODE) {
         $http.get('/api/HotelAPI/getValueSets/', {
@@ -162,6 +168,10 @@ app.controller("AngularJs_Controller", function ($scope, $timeout, $rootScope, $
         });
     }
 
+    $scope.trest = function () {
+        alert("test1111");
+        //$scope.$broadcast("refresh-svr-time");
+    }
 
     //Form Validation
     $scope.$watch("f2.$valid", function (isValid) {
