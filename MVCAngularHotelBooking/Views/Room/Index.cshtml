@@ -61,12 +61,12 @@
                     <tr>
                         <td>Room Type:</td>
                         <td>
-                            <select name="optRoomType" id="optRoomType" ng-model="RoomType" required ng-click="trest()">
+                            <select name="optRoomType" id="optRoomType" ng-model="RoomType" required>
                                 <option value="" selected>-- Select --</option>
                                 <option ng-repeat="t in RoomTypeData" value="{{t.VLS_CODE}}">{{t.VLS_CODE}}_{{t.VLS_NAME}}{{t.ATTRIBUTE1|myFilter}}</option>
                             </select>
                             <span class="error" ng-show="(f2.optRoomType.$dirty || IsFormSubmitted2) && f2.optRoomType.$error.required">Room Type required!</span>
-                            <br /><room-type room-type-data="RoomTypeData"></room-type>
+                            <br />
                         </td>
                     </tr>
                     <tr>
@@ -82,7 +82,7 @@
                     </tr>
                 </table>
             </form>
-            {{Message}}
+            <span class="error">{{Message}}</span>
         </div>
         <div class="col col-7 p-0">
             <table class="table table-bordered table-hover table-sm">

@@ -1,0 +1,185 @@
+﻿
+@{
+    ViewBag.Title = "Tab Index";
+}
+
+@section style {
+<style>
+.nav-tabs>.nav-item a:focus{
+    outline: unset;
+}
+.nav-tabs>.nav-item a:hover{
+    cursor:pointer;
+    /*border: 1px solid #fff !important;*/
+}
+.nav-tabs>.nav-item a{
+    color: black !important;
+    font-weight: 600;
+    padding: 5px 15px 5px 15px;
+    border-right: 2px solid #5741A3 !important;
+
+    background-color:#D6D6FF;
+    /*border-bottom: 2px solid #D6D6FF !important;*/
+    border-bottom: 1px solid #5741A3 !important;
+}
+.nav-tabs>.nav-item .active{
+    color: #5741A3 !important;
+    /*border:none !important;*/
+    /*border-bottom: 3px solid #5741A3 !important;*/
+    font-weight: 600;
+
+    background-color:#ffff00 !important;
+}
+.nav-tabs>.nav-item .active:hover{
+    /*border:none !important;*/
+    /*border-bottom: 3px solid #5741A3 !important;*/
+}
+.nav-tabs{
+    /*border-bottom: none !important;*/
+    border-bottom: 1px solid #5741A3 !important;
+}
+</style>
+}
+
+@section scripts {
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-animate.min.js"></script>
+    <script src="~/Scripts/MyAngular/Tab_Controller.js"></script>
+    <script>
+        $(function () {
+            //$("#dmt-tab").parent().remove(); //隱藏tab頭，調用remove直接刪除DOM
+            //$("#dmt").remove(); //隱藏tab正文信息，調用remove直接刪除DOM
+
+            $("#dmt-tab").parent().css("display","none"); //隱藏tab頭
+            $("#dmt").css("display", "none"); //隱藏tab正文信息
+
+        });
+    </script>
+}
+<div ng-app="AngularJs_Module">
+    <div ng-controller="Tab_Controller">
+        <ul class="nav nav-tabs">
+            <li class="nav-item mr-1"><a class="nav-link" ng-class="{active:isSelected('cust')}" ng-click="selectTab('cust')">案件客戶</a></li>
+            <li class="nav-item mr-1"><a class="nav-link" ng-class="{active:isSelected('attention')}" ng-click="selectTab('attention')">案件聯絡人</a></li>
+            <li class="nav-item mr-1"><a class="nav-link" ng-class="{active:isSelected('apcust')}" ng-click="selectTab('apcust')">案件申請人</a></li>
+            <li class="nav-item mr-1"><a class="nav-link" ng-class="{active:isSelected('dmt')}" ng-click="selectTab('dmt')">案件主檔</a></li>
+            <li class="nav-item mr-1"><a class="nav-link" ng-class="{active:isSelected('casefee')}" ng-click="selectTab('casefee')">收費與接洽事項</a></li>
+            <li class="nav-item mr-1"><a class="nav-link" ng-class="{active:isSelected('case')}" ng-click="selectTab('case')">交辦內容</a></li>
+            <li class="nav-item mr-1"><a class="nav-link" ng-class="{active:isSelected('attach')}" ng-click="selectTab('attach')">文件上傳</a></li>
+        </ul>
+        <div class="tab-pane" ng-show="isSelected('cust')">
+            <p>
+                <h1>cust案件客戶</h1>
+                菜鸟教程是一个提供最新的web技术站点，本站免费提供了建站相关的技术文档，帮助广大web技术爱好者快速入门并建立自己的网站。菜鸟先飞早入行——学的不仅是技术，更是梦想。
+            </p>
+        </div>
+
+        <div class="tab-pane" ng-show="isSelected('attention')">
+            <p>
+                <h1>attention案件聯絡人</h1>
+                iOS 是一个由苹果公司开发和发布的手机操作系统。最初是于 2007 年首次发布 iPhone、iPod Touch 和 Apple
+                TV。iOS 派生自 OS X，它们共享 Darwin 基础。OS X 操作系统是用在苹果电脑上，iOS 是苹果的移动版本。
+            </p>
+        </div>
+
+        <div class="tab-pane" ng-show="isSelected('apcust')">
+            <p>
+                <h1>apcust案件申請人</h1>
+                jMeter 是一款开源的测试软件。它是 100% 纯 Java 应用程序，用于负载和性能测试。
+            </p>
+        </div>
+
+        <div class="tab-pane" ng-show="isSelected('dmt')">
+            <p>
+                <h1>dmt案件主檔</h1>
+                33333菜鸟教程是一个提供最新的web技术站点，本站免费提供了建站相关的技术文档，帮助广大web技术爱好者快速入门并建立自己的网站。菜鸟先飞早入行——学的不仅是技术，更是梦想。
+            </p>
+        </div>
+
+        <div class="tab-pane" ng-show="isSelected('casefee')">
+            <p>
+                <h1>casefee收費與接洽事項</h1>
+                Enterprise Java Beans（EJB）是一个创建高度可扩展性和强大企业级应用程序的开发架构，部署在兼容应用程序服务器（比如 JBOSS、Web Logic 等）的 J2EE 上。
+            </p>
+        </div>
+
+        <div class="tab-pane" ng-show="isSelected('case')">
+            <p>
+                <h1>case交辦內容</h1>
+                Enterprise Java Beans（EJB）是一个创建高度可扩展性和强大企业级应用程序的开发架构，部署在兼容应用程序服务器（比如 JBOSS、Web Logic 等）的 J2EE 上。
+            </p>
+        </div>
+
+        <div class="tab-pane" ng-show="isSelected('attach')">
+            <p>
+                <h1>attach文件上傳</h1>
+                Enterprise Java Beans（EJB）是一个创建高度可扩展性和强大企业级应用程序的开发架构，部署在兼容应用程序服务器（比如 JBOSS、Web Logic 等）的 J2EE 上。
+            </p>
+        </div>
+    </div>
+
+    <ul id="myTab" class="nav nav-tabs">
+        <li class="nav-item mr-1"><a class="nav-link active" id="cust-tab" href="#cust" data-toggle="tab">案件客戶</a></li>
+        <li class="nav-item mr-1"><a class="nav-link" id="attention-tab" href="#attention" data-toggle="tab">案件聯絡人</a></li>
+        <li class="nav-item mr-1"><a class="nav-link" id="apcust-tab" href="#apcust" data-toggle="tab">案件申請人</a></li>
+        <li class="nav-item mr-1"><a class="nav-link" id="dmt-tab" href="#dmt" data-toggle="tab">案件主檔</a></li>
+        <li class="nav-item mr-1"><a class="nav-link" id="casefee-tab" href="#casefee" data-toggle="tab">收費與接洽事項</a></li>
+        <li class="nav-item mr-1"><a class="nav-link" id="case-tab" href="#case" data-toggle="tab">交辦內容</a></li>
+        <li class="nav-item mr-1"><a class="nav-link" id="attach-tab" href="#attach" data-toggle="tab">文件上傳</a></li>
+    </ul>
+
+    <div class="row container-fluid">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade show active" id="cust">
+                <p>
+                    <h1>cust案件客戶</h1>
+                    菜鸟教程是一个提供最新的web技术站点，本站免费提供了建站相关的技术文档，帮助广大web技术爱好者快速入门并建立自己的网站。菜鸟先飞早入行——学的不仅是技术，更是梦想。
+                </p>
+            </div>
+
+            <div class="tab-pane fade" id="attention">
+                <p>
+                    <h1>attention案件聯絡人</h1>
+                    iOS 是一个由苹果公司开发和发布的手机操作系统。最初是于 2007 年首次发布 iPhone、iPod Touch 和 Apple
+                    TV。iOS 派生自 OS X，它们共享 Darwin 基础。OS X 操作系统是用在苹果电脑上，iOS 是苹果的移动版本。
+                </p>
+            </div>
+
+            <div class="tab-pane fade" id="apcust">
+                <p>
+                    <h1>apcust案件申請人</h1>
+                    jMeter 是一款开源的测试软件。它是 100% 纯 Java 应用程序，用于负载和性能测试。
+                </p>
+            </div>
+
+            <div class="tab-pane fade" id="dmt">
+                <p>
+                    <h1>dmt案件主檔</h1>
+                    33333菜鸟教程是一个提供最新的web技术站点，本站免费提供了建站相关的技术文档，帮助广大web技术爱好者快速入门并建立自己的网站。菜鸟先飞早入行——学的不仅是技术，更是梦想。
+                </p>
+            </div>
+
+            <div class="tab-pane fade" id="casefee">
+                <p>
+                    <h1>casefee收費與接洽事項</h1>
+                    Enterprise Java Beans（EJB）是一个创建高度可扩展性和强大企业级应用程序的开发架构，部署在兼容应用程序服务器（比如 JBOSS、Web Logic 等）的 J2EE 上。
+                </p>
+            </div>
+
+            <div class="tab-pane fade" id="case">
+                <p>
+                    <h1>case交辦內容</h1>
+                    Enterprise Java Beans（EJB）是一个创建高度可扩展性和强大企业级应用程序的开发架构，部署在兼容应用程序服务器（比如 JBOSS、Web Logic 等）的 J2EE 上。
+                </p>
+            </div>
+
+            <div class="tab-pane fade" id="attach">
+                <p>
+                    <h1>attach文件上傳</h1>
+                    Enterprise Java Beans（EJB）是一个创建高度可扩展性和强大企业级应用程序的开发架构，部署在兼容应用程序服务器（比如 JBOSS、Web Logic 等）的 J2EE 上。
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>

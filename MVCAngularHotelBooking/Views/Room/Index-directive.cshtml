@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewBag.Title = "SHANU Hotel Room Manage System";
+}
+
+@section style {
+<style>
+    .error {
+        color: #FF0000;
+    }
+    .readonly {
+        background-color:tan;
+    }
+    .action{
+        cursor:pointer;
+    }
+</style>
+}
+
+@section scripts {
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-animate.min.js"></script>
+    <script src="~/Scripts/MyAngular/Controller.js"></script>
+}
+
+<div ng-app="AngularJs_Module" ng-controller="AngularJs_Controller">
+
+    <div class="container-fluid pt-3 border-primary border-bottom-3">
+        <div class="row">
+            <div class="col col-2 p-0 text-left">
+                Welcome Mr. {{'SHANU'}}
+            </div>
+            <div class="col col-8 p-0 text-center">
+                <h3>Shanu Hotel Booking System using MVC & AngularJS  :)</h3>
+            </div>
+            <div class="col col-2 p-0 text-right">
+                Today Date is :{{date | date:'yyyy-MM-dd'}}
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mt-1 pt-1 pb-1 bg-success text-center">
+        <h3 class="text-light">Manage Room Details</h3>
+    </div>
+
+    <div class="row container-fluid">
+        <div class="col col-5 p-0">
+            <form novalidate name="f2" ng-submit="saveRoom()">
+                <table>
+                    <tr>
+                        <td>Room ID:</td>
+                        <td><input type=text ng-model="RoomID" ng-readonly="true" ng-class="'readonly'"></td>
+                    </tr>
+                    <tr>
+                        <td>Room No:</td>
+                        <td>
+                            <input type=text name="txtRoomNo" id="txtRoomNo" ng-model="RoomNo" required>
+                            <span class="error" ng-show="(f2.txtRoomNo.$dirty || IsFormSubmitted2) && f2.txtRoomNo.$error.required">Room No required!</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Room Type:</td>
+                        <td>
+                            <select name="optRoomType" id="optRoomType" ng-model="RoomType" required ng-click="trest()">
+                                <option value="" selected>-- Select --</option>
+                                <option ng-repeat="t in RoomTypeData" value="{{t.VLS_CODE}}">{{t.VLS_CODE}}_{{t.VLS_NAME}}{{t.ATTRIBUTE1|myFilter}}</option>
+                            </select>
+                            <span class="error" ng-show="(f2.optRoomType.$dirty || IsFormSubmitted2) && f2.optRoomType.$error.required">Room Type required!</span>
+                            <br /><room-type room-type-data="RoomTypeData"></room-type>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Room Price:</td>
+                        <td><input type=text name="txtPrize" id="txtPrize" ng-model="Prize" required>
+                            <span class="error" ng-show="(f2.txtPrize.$dirty || IsFormSubmitted2) && f2.txtPrize.$error.required">Prize required!</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" value="Save Room" required />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            {{Message}}
+        </div>
+        <div class="col col-7 p-0">
+            <table class="table table-bordered table-hover table-sm">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Action</th>
+                        <th>Room ID</th>
+                        <th>Room No</th>
+                        <th>Room Type</th>
+                        <th>Room Price</th>
+                        <th>Flag</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="details in HotelRoomData">
+                        <td>
+                            <i class="fas fa-pencil-alt action" ng-click="modiRoom($index)"></i>&nbsp;
+                            <i class="far fa-trash-alt action" ng-click="delRoom($index)"></i>
+                        </td>
+                        <td>{{details.RoomID}}</td>
+                        <td>{{details.RoomNo}}</td>
+                        <td>{{details.RoomType}}</td>
+                        <td>{{details.Prize}}</td>
+                        <td>{{details.Flag}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>
+
