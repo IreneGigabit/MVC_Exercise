@@ -1115,9 +1115,12 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\MyAngular\Controller-Directive.js" />
-    <Content Include="Scripts\MyAngular\Controller.js" />
-    <Content Include="Scripts\MyAngular\Tab_Controller.js" />
+    <Content Include="Scripts\MyAngular\Filter.js" />
+    <Content Include="Scripts\MyAngular\Hotel\Controller-Directive.js" />
+    <Content Include="Scripts\MyAngular\Hotel\Controller.js" />
+    <Content Include="Scripts\MyAngular\Cust\custController.js" />
+    <Content Include="Scripts\MyAngular\app.js" />
+    <Content Include="Scripts\MyAngular\tabController.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />

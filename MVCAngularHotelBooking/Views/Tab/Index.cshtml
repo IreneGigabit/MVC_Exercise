@@ -1,61 +1,66 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Tab Index";
 }
 
 @section style {
 <style>
-.nav-tabs>.nav-item a:focus{
-    outline: unset;
-}
-.nav-tabs>.nav-item a:hover{
-    cursor:pointer;
-    /*border: 1px solid #fff !important;*/
-}
-.nav-tabs>.nav-item a{
-    color: black !important;
-    font-weight: 600;
-    padding: 5px 15px 5px 15px;
-    border-right: 2px solid #5741A3 !important;
+    .nav-tabs > .nav-item a:focus {
+        outline: unset;
+    }
 
-    background-color:#D6D6FF;
-    /*border-bottom: 2px solid #D6D6FF !important;*/
-    border-bottom: 1px solid #5741A3 !important;
-}
-.nav-tabs>.nav-item .active{
-    color: #5741A3 !important;
-    /*border:none !important;*/
-    /*border-bottom: 3px solid #5741A3 !important;*/
-    font-weight: 600;
+    .nav-tabs > .nav-item a:hover {
+        cursor: pointer;
+        /*border: 1px solid #fff !important;*/
+    }
 
-    background-color:#ffff00 !important;
-}
-.nav-tabs>.nav-item .active:hover{
-    /*border:none !important;*/
-    /*border-bottom: 3px solid #5741A3 !important;*/
-}
-.nav-tabs{
-    /*border-bottom: none !important;*/
-    border-bottom: 1px solid #5741A3 !important;
-}
+    .nav-tabs > .nav-item a {
+        color: black !important;
+        font-weight: 600;
+        padding: 2px 15px 5px 15px;
+        border-right: 2px solid #5741A3 !important;
+        background-color: #D6D6FF;
+        /*border-bottom: 2px solid #D6D6FF !important;*/
+        border-bottom: 1px solid #5741A3 !important;
+    }
+
+    .nav-tabs > .nav-item .active {
+        color: #5741A3 !important;
+        /*border:none !important;*/
+        /*border-bottom: 3px solid #5741A3 !important;*/
+        font-weight: 600;
+        background-color: #ffff00 !important;
+    }
+
+        .nav-tabs > .nav-item .active:hover {
+            /*border:none !important;*/
+            /*border-bottom: 3px solid #5741A3 !important;*/
+        }
+
+    .nav-tabs {
+        /*border-bottom: none !important;*/
+        border-bottom: 1px solid #5741A3 !important;
+    }
 </style>
 }
 
 @section scripts {
-    <script src="~/Scripts/angular.min.js"></script>
-    <script src="~/Scripts/angular-animate.min.js"></script>
-    <script src="~/Scripts/MyAngular/Tab_Controller.js"></script>
-    <script>
-        $(function () {
-            //$("#dmt-tab").parent().remove(); //隱藏tab頭，調用remove直接刪除DOM
-            //$("#dmt").remove(); //隱藏tab正文信息，調用remove直接刪除DOM
+<script src="~/Scripts/angular.min.js"></script>
+<script src="~/Scripts/angular-animate.min.js"></script>
+<script src="~/Scripts/MyAngular/app.js"></script>
+<script src="~/Scripts/MyAngular/Filter.js"></script>
+<script src="~/Scripts/MyAngular/tabController.js"></script>
+<script src="~/Scripts/MyAngular/Cust/custController.js"></script>
+<script>
+    $(function () {
+        //$("#dmt-tab").parent().remove(); //隱藏tab頭，調用remove直接刪除DOM
+        //$("#dmt").remove(); //隱藏tab正文信息，調用remove直接刪除DOM
 
-            $("#dmt-tab").parent().css("display","none"); //隱藏tab頭
-            $("#dmt").css("display", "none"); //隱藏tab正文信息
-
-        });
-    </script>
+        //$("#dmt-tab").parent().css("display","none"); //隱藏tab頭
+        //$("#dmt").css("display", "none"); //隱藏tab正文信息
+    });
+</script>
 }
+
 <div ng-app="AngularJs_Module">
     <div ng-controller="Tab_Controller">
         <ul class="nav nav-tabs">
@@ -130,11 +135,238 @@
 
     <div class="row container-fluid">
         <div id="myTabContent" class="tab-content">
-            <div class="tab-pane fade show active" id="cust">
-                <p>
-                    <h1>cust案件客戶</h1>
-                    菜鸟教程是一个提供最新的web技术站点，本站免费提供了建站相关的技术文档，帮助广大web技术爱好者快速入门并建立自己的网站。菜鸟先飞早入行——学的不仅是技术，更是梦想。
-                </p>
+            <div class="tab-pane fade show active" id="cust" ng-controller="Cust_Controller">
+                <table border="0" class=bluetable cellspacing="1" cellpadding="2" style="font-size: 9pt" width="100%">
+                    <tr>
+                        <td class=lightbluetable align="right">客戶編號：</td>
+                        <td class=whitetablebg>
+                            <input type="text" name="F_cust_area" size="1" readonly class="sedit" value="">-
+                            <input type="text" name="F_cust_seq" size="6">
+                            <input type=button class="sgreenbutton" name="btncust_seq" value="確定">
+                        </td>
+                        <td class=lightbluetable align="right">客戶國籍：</td>
+                        <td class=whitetablebg>
+                            <select id="F_ap_country" name="F_ap_country" size=1 disabled>
+                                <option value="" style="color:blue"></option>
+                                <%SQL="SELECT coun_code, coun_c FROM country where markb<>'X' ORDER BY coun_code"
+                                SET RSS=cnn.execute(SQL)
+                                While not RSS.EOF%>
+                                <option value="<%=trim(RSS(0))%>"><%=trim(RSS(0))%>-<%=trim(RSS(1))%></option>
+                                <%	RSS.movenext
+                                wend %>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class=lightbluetable align=right width=16%>客戶種類：</td>
+                        <td class=whitetablebg><input type=text id="F_apclass" class="sedit" readonly size="30"></td>
+                        <td class=lightbluetable align="right" width="15%">客戶群組：</td>
+                        <td class=whitetablebg><input type=text id=F_ref_seq class="sedit" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class=lightbluetable align=right>統一編號：</td>
+                        <td class=whitetablebg colspan=3><input type=text id="F_id_no" size=12 maxlength=10 class="sedit" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class=lightbluetable align=right>客戶名稱：</td>
+                        <td class=whitetablebg colspan=3>
+                            <input type=text id="F_ap_cname1" size=44 maxlength=60 class="sedit" readonly>
+                            <input type=text name="F_ap_cname2" size=44 maxlength=60 class="sedit" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class=lightbluetable align=right>英文名稱：</td><!--2016/1/7修改申請人英文名稱長度為100-->
+                        <td class=whitetablebg colspan=3>
+                            <input type=text id="F_ap_ename1" size=60 maxlength=100 class="sedit" readonly>
+                            <input type=text name="F_ap_ename2" size=60 maxlength=100 class="sedit" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class=lightbluetable align=right>代表人(中)：</td>
+                        <td class=whitetablebg colspan=3><input type=text id="F_ap_crep" size=20 maxlength=20 class="sedit" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class=lightbluetable align=right>代表人(英)：</td>
+                        <td class=whitetablebg colspan=3><input type=text id="F_ap_erep" size=40 maxlength=40 class="sedit" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class=lightbluetable align=right>証照地址(中)：</td><!--2016/1/7修改申請人中英文證照地址長度為120-->
+                        <td class=whitetablebg colspan=3>
+                            (<input type=text id=F_ap_zip size=8 maxlength=8 class="sedit" readonly>)<br>
+                            <input type=text id=F_ap_addr1 size=103 maxlength=120 class="sedit" readonly>
+                            <input type=text id=F_ap_addr2 size=103 maxlength=120 class="sedit" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class=lightbluetable align=right>登記地址(英)：</td>
+                        <td class=whitetablebg colspan=3>
+                            <input type=text id=F_ap_eaddr1 size=103 maxlength=120 class="sedit" readonly><br>
+                            <input type=text id=F_ap_eaddr2 size=103 maxlength=120 class="sedit" readonly><br>
+                            <input type=text id=F_ap_eaddr3 size=103 maxlength=120 class="sedit" readonly><br>
+                            <input type=text id=F_ap_eaddr4 size=103 maxlength=120 class="sedit" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class=lightbluetable align="right">公司網址：</td>
+                        <td class=whitetablebg colspan=3><input type=text id=F_www size=40 maxlength=40 class="sedit" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class=lightbluetable align="right">公司電子郵件：</td>
+                        <td class=whitetablebg colspan=3><input type=text id=F_email size=40 maxlength=40 class="sedit" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class=lightbluetable align="right">商標對帳聯絡人：</td>
+                        <td class=whitetablebg><input type=text id=F_tacc_attention size=40 maxlength=60 class="sedit" readonly></td>
+                        <td class=lightbluetable align="right">商標對帳聯絡人職稱：</td>
+                        <td class=whitetablebg><input type=text id=F_tacc_title size=40 maxlength=40 class="sedit" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class=lightbluetable align="right">商標對帳電子郵件：</td>
+                        <td class=whitetablebg colspan=3><input type=text id=F_tacc_email size=80 maxlength=100 class="sedit" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class=lightbluetable align="right">商標對帳地址：</td>
+                        <td class=whitetablebg colspan=3>
+                            (<input type=text id=F_tacc_zip size=8 maxlength=8 class="sedit" readonly>)
+                            <input type="text" id="F_tacc_addr1" size="47" maxlength="60" class="sedit" readonly>
+                            <input type="text" id="F_tacc_addr2" size="47" maxlength="60" class="sedit" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class=lightbluetable align="right">商標會計電話：</td>
+                        <td class=whitetablebg>
+                            (<input type=text id=F_tacc_tel0 size=4 maxlength=4 class="sedit" readonly>)
+                            <input type=text id=F_tacc_tel size=10 maxlength=10 class="sedit" readonly>-
+                            <input type=text id=F_tacc_tel1 size=5 maxlength=5 class="sedit" readonly>
+                        </td>
+                        <td class=lightbluetable align="right">商標會計傳真：</td>
+                        <td class=whitetablebg><input type=text id=F_tacc_fax size=15 maxlength=15 class="sedit" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class=lightbluetable align="right">專利對帳地址：</td>
+                        <td class=whitetablebg colspan=3>
+                            (<input type=text id=F_acc_zip size=8 maxlength=8 class="sedit" readonly>)
+                            <input type="text" id="F_acc_addr1" size="47" maxlength="60" class="sedit" readonly>
+                            <input type="text" id="F_acc_addr2" size="47" maxlength="60" class="sedit" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class=lightbluetable align="right">專利會計電話：</td>
+                        <td class=whitetablebg>
+                            (<input type=text id=F_acc_tel0 size=4 maxlength=4 class="sedit" readonly>)
+                            <input type=text id=F_acc_tel size=10 maxlength=10 class="sedit" readonly>-
+                            <input type=text id=F_acc_tel1 size=5 maxlength=5 class="sedit" readonly>
+                        </td>
+                        <td class=lightbluetable align="right">專利會計傳真：</td>
+                        <td class=whitetablebg><input type=text id=F_acc_fax size=15 maxlength=15 class="sedit" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class=lightbluetable align="right">郵寄雜誌：</td>
+                        <td class=whitetablebg colspan=3><input type=text id=F_mag size=10 maxlength=15 class="sedit" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class=lightbluetable align="right">顧問種類：</td>
+                        <td class=whitetablebg>
+                            <select id=F_con_code size=1 disabled>
+                                <option value="" style="color:blue">請選擇</option>
+                                <%SQL="select cust_code,code_name from cust_code where code_type='H' order by cust_code"
+                                SET RSS=conn.execute(SQL)
+                                While not RSS.EOF%>
+                                <option value="<%=trim(RSS(0))%>"><%=trim(RSS(0))%>---<%=RSS(1)%></option>
+                                <%	RSS.movenext
+                                wend
+                                RSS.close
+                                set RSS=nothing	%>
+                            </select>
+                        </td>
+                        <td class=lightbluetable align="right">顧問迄日：</td>
+                        <td class=whitetablebg><input type=text id=F_con_term size=10 class="sedit" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class=lightbluetable align=right>專利客戶等級：</td>
+                        <td class=whitetablebg>
+                            <select id=F_plevel size=1 disabled>
+                                <option value="" style="color:blue">請選擇</option>
+                                <option value="A">大客戶</option>
+                                <option value="B">中客戶</option>
+                                <option value="C">小客戶</option>
+                                <option value="L">流失客戶</option>
+                                <option value="O">結束客戶</option>
+                            </select>
+                        </td>
+                        <td class=lightbluetable align=right>商標客戶等級：</td>
+                        <td class=whitetablebg>
+                            <select id=F_tlevel size=1 disabled>
+                                <option value="" style="color:blue">請選擇</option>
+                                <option value="A">大客戶</option>
+                                <option value="B">中客戶</option>
+                                <option value="C">小客戶</option>
+                                <option value="L">流失客戶</option>
+                                <option value="O">結束客戶</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class=lightbluetable align=right>專利折扣代碼：</td>
+                        <td class=whitetablebg>
+                            <select id=F_pdis_type size=1 disabled>
+                                <option value="" style="color:blue">請選擇</option>
+                                <%SQL="select cust_code,code_name from cust_code where code_type='Discount' order by cust_code"
+                                SET RSS=conn.execute(SQL)
+                                While not RSS.EOF%>
+                                <option value="<%=trim(RSS(0))%>"><%=trim(RSS(0))%>---<%=RSS(1)%></option>
+                                <%	RSS.movenext
+                                wend
+                                RSS.close%>
+                            </select>
+                        </td>
+                        <td class=lightbluetable align=right>商標折扣代碼：</td>
+                        <td class=whitetablebg>
+                            <select id=F_tdis_type size=1 disabled>
+                                <option value="" style="color:blue">請選擇</option>
+                                <%SQL="select cust_code,code_name from cust_code where code_type='Discount' order by cust_code"
+                                SET RSS=conn.execute(SQL)
+                                While not RSS.EOF%>
+                                <option value="<%=trim(RSS(0))%>"><%=trim(RSS(0))%>---<%=RSS(1)%></option>
+                                <%	RSS.movenext
+                                wend
+                                RSS.close%>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class=lightbluetable align=right>專利付款條件：</td>
+                        <td class=whitetablebg>
+                            <select id=F_ppay_type size=1 disabled>
+                                <option value="" style="color:blue">請選擇</option>
+                                <%SQL="select cust_code,code_name from cust_code where code_type='Payment' order by cust_code"
+                                SET RSS=conn.execute(SQL)
+                                While not RSS.EOF%>
+                                <option value="<%=trim(RSS(0))%>"><%=trim(RSS(0))%>---<%=RSS(1)%></option>
+                                <%	RSS.movenext
+                                wend
+                                RSS.close%>
+                            </select>
+                        </td>
+                        <td class=lightbluetable align=right>商標付款條件：</td>
+                        <td class=whitetablebg>
+                            <select id=F_tpay_type size=1 disabled>
+                                <option value="" style="color:blue">請選擇</option>
+                                <%SQL="select cust_code,code_name from cust_code where code_type='Payment' order by cust_code"
+                                SET RSS=conn.execute(SQL)
+                                While not RSS.EOF%>
+                                <option value="<%=trim(RSS(0))%>"><%=trim(RSS(0))%>---<%=RSS(1)%></option>
+                                <%	RSS.movenext
+                                wend
+                                RSS.close%>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class=lightbluetable align=right>備註說明：</td>
+                        <td class=whitetablebg colspan=3><textarea rows=5 cols=80 class="sedit" readonly id=F_mark></textarea>
+                    </tr>
+                </table>
             </div>
 
             <div class="tab-pane fade" id="attention">
