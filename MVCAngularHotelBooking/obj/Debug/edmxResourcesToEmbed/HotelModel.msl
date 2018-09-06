@@ -127,5 +127,148 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="apcusts">
+      <EntityTypeMapping TypeName="HotelDBModel.apcust">
+        <MappingFragment StoreEntitySet="apcust">
+          <ScalarProperty Name="apatt_email" ColumnName="apatt_email" />
+          <ScalarProperty Name="ap_lename" ColumnName="ap_lename" />
+          <ScalarProperty Name="ap_fename" ColumnName="ap_fename" />
+          <ScalarProperty Name="ap_lcname" ColumnName="ap_lcname" />
+          <ScalarProperty Name="ap_fcname" ColumnName="ap_fcname" />
+          <ScalarProperty Name="ap_title" ColumnName="ap_title" />
+          <ScalarProperty Name="mark" ColumnName="mark" />
+          <ScalarProperty Name="ext_seq" ColumnName="ext_seq" />
+          <ScalarProperty Name="dmt_seq" ColumnName="dmt_seq" />
+          <ScalarProperty Name="exp_seq" ColumnName="exp_seq" />
+          <ScalarProperty Name="dmp_seq" ColumnName="dmp_seq" />
+          <ScalarProperty Name="tran_scode" ColumnName="tran_scode" />
+          <ScalarProperty Name="tran_date" ColumnName="tran_date" />
+          <ScalarProperty Name="ap_code" ColumnName="ap_code" />
+          <ScalarProperty Name="in_date" ColumnName="in_date" />
+          <ScalarProperty Name="apatt_fax" ColumnName="apatt_fax" />
+          <ScalarProperty Name="apatt_tel1" ColumnName="apatt_tel1" />
+          <ScalarProperty Name="apatt_tel" ColumnName="apatt_tel" />
+          <ScalarProperty Name="apatt_tel0" ColumnName="apatt_tel0" />
+          <ScalarProperty Name="apatt_addr2" ColumnName="apatt_addr2" />
+          <ScalarProperty Name="apatt_addr1" ColumnName="apatt_addr1" />
+          <ScalarProperty Name="apatt_zip" ColumnName="apatt_zip" />
+          <ScalarProperty Name="ap_eaddr4" ColumnName="ap_eaddr4" />
+          <ScalarProperty Name="ap_eaddr3" ColumnName="ap_eaddr3" />
+          <ScalarProperty Name="ap_eaddr2" ColumnName="ap_eaddr2" />
+          <ScalarProperty Name="ap_eaddr1" ColumnName="ap_eaddr1" />
+          <ScalarProperty Name="ap_addr2" ColumnName="ap_addr2" />
+          <ScalarProperty Name="ap_addr1" ColumnName="ap_addr1" />
+          <ScalarProperty Name="ap_zip" ColumnName="ap_zip" />
+          <ScalarProperty Name="ap_country" ColumnName="ap_country" />
+          <ScalarProperty Name="ap_erep" ColumnName="ap_erep" />
+          <ScalarProperty Name="ap_crep" ColumnName="ap_crep" />
+          <ScalarProperty Name="ap_ename2" ColumnName="ap_ename2" />
+          <ScalarProperty Name="ap_ename1" ColumnName="ap_ename1" />
+          <ScalarProperty Name="ap_cname2" ColumnName="ap_cname2" />
+          <ScalarProperty Name="ap_cname1" ColumnName="ap_cname1" />
+          <ScalarProperty Name="cust_seq" ColumnName="cust_seq" />
+          <ScalarProperty Name="cust_area" ColumnName="cust_area" />
+          <ScalarProperty Name="apclass" ColumnName="apclass" />
+          <ScalarProperty Name="apcust_no" ColumnName="apcust_no" />
+          <ScalarProperty Name="apsqlno" ColumnName="apsqlno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="custzs">
+      <EntityTypeMapping TypeName="HotelDBModel.custz">
+        <MappingFragment StoreEntitySet="custz">
+          <ScalarProperty Name="taxacc_fax" ColumnName="taxacc_fax" />
+          <ScalarProperty Name="taxacc_tel1" ColumnName="taxacc_tel1" />
+          <ScalarProperty Name="taxacc_tel" ColumnName="taxacc_tel" />
+          <ScalarProperty Name="taxacc_tel0" ColumnName="taxacc_tel0" />
+          <ScalarProperty Name="taxacc_addr2" ColumnName="taxacc_addr2" />
+          <ScalarProperty Name="taxacc_addr1" ColumnName="taxacc_addr1" />
+          <ScalarProperty Name="taxacc_zip" ColumnName="taxacc_zip" />
+          <ScalarProperty Name="taxacc_email" ColumnName="taxacc_email" />
+          <ScalarProperty Name="taxacc_attention" ColumnName="taxacc_attention" />
+          <ScalarProperty Name="tax_email" ColumnName="tax_email" />
+          <ScalarProperty Name="tax_attention" ColumnName="tax_attention" />
+          <ScalarProperty Name="tspay_refno" ColumnName="tspay_refno" />
+          <ScalarProperty Name="tspay_seq" ColumnName="tspay_seq" />
+          <ScalarProperty Name="tspay_source" ColumnName="tspay_source" />
+          <ScalarProperty Name="pspay_refno" ColumnName="pspay_refno" />
+          <ScalarProperty Name="pspay_seq" ColumnName="pspay_seq" />
+          <ScalarProperty Name="pspay_source" ColumnName="pspay_source" />
+          <ScalarProperty Name="ppay_typem" ColumnName="ppay_typem" />
+          <ScalarProperty Name="tpay_typem" ColumnName="tpay_typem" />
+          <ScalarProperty Name="payout_mark" ColumnName="payout_mark" />
+          <ScalarProperty Name="tax_fax" ColumnName="tax_fax" />
+          <ScalarProperty Name="tax_tel1" ColumnName="tax_tel1" />
+          <ScalarProperty Name="tax_tel" ColumnName="tax_tel" />
+          <ScalarProperty Name="tax_tel0" ColumnName="tax_tel0" />
+          <ScalarProperty Name="tax_addr2" ColumnName="tax_addr2" />
+          <ScalarProperty Name="tax_addr1" ColumnName="tax_addr1" />
+          <ScalarProperty Name="tax_zip" ColumnName="tax_zip" />
+          <ScalarProperty Name="tacc_title" ColumnName="tacc_title" />
+          <ScalarProperty Name="tacc_attention" ColumnName="tacc_attention" />
+          <ScalarProperty Name="pacc_title" ColumnName="pacc_title" />
+          <ScalarProperty Name="pacc_attention" ColumnName="pacc_attention" />
+          <ScalarProperty Name="tacc_chkcode" ColumnName="tacc_chkcode" />
+          <ScalarProperty Name="pacc_chkcode" ColumnName="pacc_chkcode" />
+          <ScalarProperty Name="tspay_mm" ColumnName="tspay_mm" />
+          <ScalarProperty Name="tspay_flag" ColumnName="tspay_flag" />
+          <ScalarProperty Name="pspay_mm" ColumnName="pspay_mm" />
+          <ScalarProperty Name="pspay_flag" ColumnName="pspay_flag" />
+          <ScalarProperty Name="acc_remark" ColumnName="acc_remark" />
+          <ScalarProperty Name="tacc_fax" ColumnName="tacc_fax" />
+          <ScalarProperty Name="tacc_tel1" ColumnName="tacc_tel1" />
+          <ScalarProperty Name="tacc_tel" ColumnName="tacc_tel" />
+          <ScalarProperty Name="tacc_tel0" ColumnName="tacc_tel0" />
+          <ScalarProperty Name="tacc_addr2" ColumnName="tacc_addr2" />
+          <ScalarProperty Name="tacc_addr1" ColumnName="tacc_addr1" />
+          <ScalarProperty Name="tacc_zip" ColumnName="tacc_zip" />
+          <ScalarProperty Name="tacc_email" ColumnName="tacc_email" />
+          <ScalarProperty Name="pacc_email" ColumnName="pacc_email" />
+          <ScalarProperty Name="tran_upmail" ColumnName="tran_upmail" />
+          <ScalarProperty Name="tran_output" ColumnName="tran_output" />
+          <ScalarProperty Name="tran_ctrl" ColumnName="tran_ctrl" />
+          <ScalarProperty Name="tran_remark" ColumnName="tran_remark" />
+          <ScalarProperty Name="mark" ColumnName="mark" />
+          <ScalarProperty Name="cust_remark" ColumnName="cust_remark" />
+          <ScalarProperty Name="ptran_scode" ColumnName="ptran_scode" />
+          <ScalarProperty Name="ptran_date" ColumnName="ptran_date" />
+          <ScalarProperty Name="ttran_scode" ColumnName="ttran_scode" />
+          <ScalarProperty Name="ttran_date" ColumnName="ttran_date" />
+          <ScalarProperty Name="tran_code" ColumnName="tran_code" />
+          <ScalarProperty Name="in_scode" ColumnName="in_scode" />
+          <ScalarProperty Name="in_date" ColumnName="in_date" />
+          <ScalarProperty Name="exp_date" ColumnName="exp_date" />
+          <ScalarProperty Name="dmp_date" ColumnName="dmp_date" />
+          <ScalarProperty Name="ext_date" ColumnName="ext_date" />
+          <ScalarProperty Name="dmt_date" ColumnName="dmt_date" />
+          <ScalarProperty Name="tpay_type" ColumnName="tpay_type" />
+          <ScalarProperty Name="tdis_type" ColumnName="tdis_type" />
+          <ScalarProperty Name="tlevel" ColumnName="tlevel" />
+          <ScalarProperty Name="tscode" ColumnName="tscode" />
+          <ScalarProperty Name="ppay_type" ColumnName="ppay_type" />
+          <ScalarProperty Name="pdis_type" ColumnName="pdis_type" />
+          <ScalarProperty Name="plevel" ColumnName="plevel" />
+          <ScalarProperty Name="pscode" ColumnName="pscode" />
+          <ScalarProperty Name="mag" ColumnName="mag" />
+          <ScalarProperty Name="ref_no" ColumnName="ref_no" />
+          <ScalarProperty Name="ref_seq" ColumnName="ref_seq" />
+          <ScalarProperty Name="rmark_code" ColumnName="rmark_code" />
+          <ScalarProperty Name="acc_fax" ColumnName="acc_fax" />
+          <ScalarProperty Name="acc_tel1" ColumnName="acc_tel1" />
+          <ScalarProperty Name="acc_tel" ColumnName="acc_tel" />
+          <ScalarProperty Name="acc_tel0" ColumnName="acc_tel0" />
+          <ScalarProperty Name="acc_addr2" ColumnName="acc_addr2" />
+          <ScalarProperty Name="acc_addr1" ColumnName="acc_addr1" />
+          <ScalarProperty Name="acc_zip" ColumnName="acc_zip" />
+          <ScalarProperty Name="con_term" ColumnName="con_term" />
+          <ScalarProperty Name="con_code" ColumnName="con_code" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="www" ColumnName="www" />
+          <ScalarProperty Name="id_no" ColumnName="id_no" />
+          <ScalarProperty Name="cust_seq" ColumnName="cust_seq" />
+          <ScalarProperty Name="cust_area" ColumnName="cust_area" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

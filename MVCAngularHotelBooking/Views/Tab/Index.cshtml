@@ -123,6 +123,8 @@
         </div>
     </div>
 
+    Message= {{Message}}
+
     <ul id="myTab" class="nav nav-tabs">
         <li class="nav-item mr-1"><a class="nav-link active" id="cust-tab" href="#cust" data-toggle="tab">案件客戶</a></li>
         <li class="nav-item mr-1"><a class="nav-link" id="attention-tab" href="#attention" data-toggle="tab">案件聯絡人</a></li>
@@ -140,13 +142,13 @@
                     <tr>
                         <td class=lightbluetable align="right">客戶編號：</td>
                         <td class=whitetablebg>
-                            <input type="text" name="F_cust_area" size="1" readonly class="sedit" value="">-
-                            <input type="text" name="F_cust_seq" size="6">
-                            <input type=button class="sgreenbutton" name="btncust_seq" value="確定">
+                            <input type="text" ng-model="Cust.cust_area" size="1" readonly class="sedit" value="">-
+                            <input type="text" ng-model="Cust.cust_seq" size="6">
+                            <input type=button class="sgreenbutton" name="btncust_seq" ng-click="selectCust(Cust.cust_area,Cust.cust_seq)" value="確定">
                         </td>
                         <td class=lightbluetable align="right">客戶國籍：</td>
                         <td class=whitetablebg>
-                            <select id="F_ap_country" name="F_ap_country" size=1 disabled>
+                            <select ng-model="Cust.ap_country" size=1 disabled>
                                 <option value="" style="color:blue"></option>
                                 <%SQL="SELECT coun_code, coun_c FROM country where markb<>'X' ORDER BY coun_code"
                                 SET RSS=cnn.execute(SQL)
@@ -159,13 +161,13 @@
                     </tr>
                     <tr>
                         <td class=lightbluetable align=right width=16%>客戶種類：</td>
-                        <td class=whitetablebg><input type=text id="F_apclass" class="sedit" readonly size="30"></td>
+                        <td class=whitetablebg><input type=text ng-model="Cust.apclass" class="sedit" readonly size="30"></td>
                         <td class=lightbluetable align="right" width="15%">客戶群組：</td>
-                        <td class=whitetablebg><input type=text id=F_ref_seq class="sedit" readonly></td>
+                        <td class=whitetablebg><input type=text ng-model="Cust.ref_seq" class="sedit" readonly></td>
                     </tr>
                     <tr>
                         <td class=lightbluetable align=right>統一編號：</td>
-                        <td class=whitetablebg colspan=3><input type=text id="F_id_no" size=12 maxlength=10 class="sedit" readonly></td>
+                        <td class=whitetablebg colspan=3><input type=text ng-model="Cust.id_no" size=12 maxlength=10 class="sedit" readonly></td>
                     </tr>
                     <tr>
                         <td class=lightbluetable align=right>客戶名稱：</td>

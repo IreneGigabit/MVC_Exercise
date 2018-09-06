@@ -9,6 +9,8 @@
         <EntityTypeShape EntityType="HotelDBModel.RoomBooking" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="HotelDBModel.ValueSet" Width="1.5" PointX="0.75" PointY="4.75" />
         <EntityTypeShape EntityType="HotelDBModel.ValueSetKind" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="HotelDBModel.apcust" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="HotelDBModel.custz" Width="1.5" PointX="7.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
