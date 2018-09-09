@@ -1,8 +1,19 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-animate.min.js"></script>
+    <script src="~/Scripts/MyAngular/app.js"></script>
+    <script src="~/Scripts/MyAngular/_Common/filters/Filter.js"></script>
+    <script src="~/Scripts/MyAngular/_Common/directives/dateDirective.js"></script>
+
     @Styles.Render("~/CSS/FontAwesome")
+    @Styles.Render("~/CSS/Bootstrap")
+    @Styles.Render("~/Content/jqueryui/css")
+
     @RenderSection("style", required: false)
 </head>
 <body>
@@ -43,7 +54,5 @@
     </div>
 </body>
 </html>
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
-@Styles.Render("~/CSS/Bootstrap")
+
 @RenderSection("scripts", required: false)

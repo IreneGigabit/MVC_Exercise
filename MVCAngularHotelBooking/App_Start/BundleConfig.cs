@@ -26,9 +26,16 @@ namespace MVCAngularHotelBooking
             bundles.Add(new StyleBundle("~/CSS/Bootstrap").Include(
                             "~/Content/bootstrap.css"
                             ));
+
             bundles.Add(new StyleBundle("~/CSS/FontAwesome").Include(
                             "~/Content/all.min.css"
                             ));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
+            "~/Scripts/jquery-ui-{version}.js"));
+
+            bundles.Add(new StyleBundle("~/Content/jqueryui/css").Include(
+              "~/Content/themes/base/jquery-ui.min.css"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

@@ -1,8 +1,6 @@
 ﻿app.controller("Cust_Controller", function ($scope, $timeout, $rootScope, $window, $http) {
     $scope.Cust = {};
 
-
-
     $scope.selectCust = function (CustArea, CustSeq) {
         $http.get('/Tab/getCust/', {
             params: { CustArea: CustArea, CustSeq: CustSeq }
@@ -15,6 +13,5 @@
         });
     }
     $scope.selectCust('N', 1624);
-
 });
 

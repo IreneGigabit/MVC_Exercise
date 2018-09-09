@@ -44,11 +44,7 @@
 }
 
 @section scripts {
-<script src="~/Scripts/angular.min.js"></script>
-<script src="~/Scripts/angular-animate.min.js"></script>
-<script src="~/Scripts/MyAngular/app.js"></script>
-<script src="~/Scripts/MyAngular/Filter.js"></script>
-<script src="~/Scripts/MyAngular/tabController.js"></script>
+<script src="~/Scripts/MyAngular/_Common/controllers/tabController.js"></script>
 <script src="~/Scripts/MyAngular/Cust/custController.js"></script>
 <script>
     $(function () {
@@ -144,7 +140,7 @@
                         <td class=whitetablebg>
                             <input type="text" ng-model="Cust.cust_area" size="1" readonly class="sedit" value="">-
                             <input type="text" ng-model="Cust.cust_seq" size="6">
-                            <input type=button class="sgreenbutton" name="btncust_seq" ng-click="selectCust(Cust.cust_area,Cust.cust_seq)" value="確定">
+                            <input type=button class="sgreenbutton" ng-click="selectCust(Cust.cust_area,Cust.cust_seq)" value="確定">
                         </td>
                         <td class=lightbluetable align="right">客戶國籍：</td>
                         <td class=whitetablebg>
@@ -172,104 +168,104 @@
                     <tr>
                         <td class=lightbluetable align=right>客戶名稱：</td>
                         <td class=whitetablebg colspan=3>
-                            <input type=text id="F_ap_cname1" size=44 maxlength=60 class="sedit" readonly>
-                            <input type=text name="F_ap_cname2" size=44 maxlength=60 class="sedit" readonly>
+                            <input type=text ng-model="Cust.ap_cname1" size=44 maxlength=60 class="sedit" readonly>
+                            <input type=text ng-model="Cust.ap_cname2" size=44 maxlength=60 class="sedit" readonly>
                         </td>
                     </tr>
                     <tr>
                         <td class=lightbluetable align=right>英文名稱：</td><!--2016/1/7修改申請人英文名稱長度為100-->
                         <td class=whitetablebg colspan=3>
-                            <input type=text id="F_ap_ename1" size=60 maxlength=100 class="sedit" readonly>
-                            <input type=text name="F_ap_ename2" size=60 maxlength=100 class="sedit" readonly>
+                            <input type=text ng-model="Cust.ap_ename1" size=60 maxlength=100 class="sedit" readonly>
+                            <input type=text ng-model="Cust.ap_ename2" size=60 maxlength=100 class="sedit" readonly>
                         </td>
                     </tr>
                     <tr>
                         <td class=lightbluetable align=right>代表人(中)：</td>
-                        <td class=whitetablebg colspan=3><input type=text id="F_ap_crep" size=20 maxlength=20 class="sedit" readonly></td>
+                        <td class=whitetablebg colspan=3><input type=text ng-model="Cust.ap_crep" size=20 maxlength=20 class="sedit" readonly></td>
                     </tr>
                     <tr>
                         <td class=lightbluetable align=right>代表人(英)：</td>
-                        <td class=whitetablebg colspan=3><input type=text id="F_ap_erep" size=40 maxlength=40 class="sedit" readonly></td>
+                        <td class=whitetablebg colspan=3><input type=text ng-model="Cust.ap_erep" size=40 maxlength=40 class="sedit" readonly></td>
                     </tr>
                     <tr>
                         <td class=lightbluetable align=right>証照地址(中)：</td><!--2016/1/7修改申請人中英文證照地址長度為120-->
                         <td class=whitetablebg colspan=3>
-                            (<input type=text id=F_ap_zip size=8 maxlength=8 class="sedit" readonly>)<br>
-                            <input type=text id=F_ap_addr1 size=103 maxlength=120 class="sedit" readonly>
-                            <input type=text id=F_ap_addr2 size=103 maxlength=120 class="sedit" readonly>
+                            (<input type=text ng-model=Cust.ap_zip size=8 maxlength=8 class="sedit" readonly>)<br>
+                            <input type=text ng-model=Cust.ap_addr1 size=103 maxlength=120 class="sedit" readonly>
+                            <input type=text ng-model=Cust.ap_addr2 size=103 maxlength=120 class="sedit" readonly>
                         </td>
                     </tr>
                     <tr>
                         <td class=lightbluetable align=right>登記地址(英)：</td>
                         <td class=whitetablebg colspan=3>
-                            <input type=text id=F_ap_eaddr1 size=103 maxlength=120 class="sedit" readonly><br>
-                            <input type=text id=F_ap_eaddr2 size=103 maxlength=120 class="sedit" readonly><br>
-                            <input type=text id=F_ap_eaddr3 size=103 maxlength=120 class="sedit" readonly><br>
-                            <input type=text id=F_ap_eaddr4 size=103 maxlength=120 class="sedit" readonly>
+                            <input type=text ng-model=Cust.ap_eaddr1 size=103 maxlength=120 class="sedit" readonly><br>
+                            <input type=text ng-model=Cust.ap_eaddr2 size=103 maxlength=120 class="sedit" readonly><br>
+                            <input type=text ng-model=Cust.ap_eaddr3 size=103 maxlength=120 class="sedit" readonly><br>
+                            <input type=text ng-model=Cust.ap_eaddr4 size=103 maxlength=120 class="sedit" readonly>
                         </td>
                     </tr>
                     <tr>
                         <td class=lightbluetable align="right">公司網址：</td>
-                        <td class=whitetablebg colspan=3><input type=text id=F_www size=40 maxlength=40 class="sedit" readonly></td>
+                        <td class=whitetablebg colspan=3><input type=text ng-model=Cust.www size=40 maxlength=40 class="sedit" readonly></td>
                     </tr>
                     <tr>
                         <td class=lightbluetable align="right">公司電子郵件：</td>
-                        <td class=whitetablebg colspan=3><input type=text id=F_email size=40 maxlength=40 class="sedit" readonly></td>
+                        <td class=whitetablebg colspan=3><input type=text ng-model=Cust.email size=40 maxlength=40 class="sedit" readonly></td>
                     </tr>
                     <tr>
                         <td class=lightbluetable align="right">商標對帳聯絡人：</td>
-                        <td class=whitetablebg><input type=text id=F_tacc_attention size=40 maxlength=60 class="sedit" readonly></td>
+                        <td class=whitetablebg><input type=text ng-model=Cust.tacc_attention size=40 maxlength=60 class="sedit" readonly></td>
                         <td class=lightbluetable align="right">商標對帳聯絡人職稱：</td>
-                        <td class=whitetablebg><input type=text id=F_tacc_title size=40 maxlength=40 class="sedit" readonly></td>
+                        <td class=whitetablebg><input type=text ng-model=Cust.tacc_title size=40 maxlength=40 class="sedit" readonly></td>
                     </tr>
                     <tr>
                         <td class=lightbluetable align="right">商標對帳電子郵件：</td>
-                        <td class=whitetablebg colspan=3><input type=text id=F_tacc_email size=80 maxlength=100 class="sedit" readonly></td>
+                        <td class=whitetablebg colspan=3><input type=text ng-model=Cust.tacc_email size=80 maxlength=100 class="sedit" readonly></td>
                     </tr>
                     <tr>
                         <td class=lightbluetable align="right">商標對帳地址：</td>
                         <td class=whitetablebg colspan=3>
-                            (<input type=text id=F_tacc_zip size=8 maxlength=8 class="sedit" readonly>)
-                            <input type="text" id="F_tacc_addr1" size="47" maxlength="60" class="sedit" readonly>
-                            <input type="text" id="F_tacc_addr2" size="47" maxlength="60" class="sedit" readonly>
+                            (<input type=text ng-model=Cust.tacc_zip size=8 maxlength=8 class="sedit" readonly>)
+                            <input type="text" ng-model="Cust.tacc_addr1" size="47" maxlength="60" class="sedit" readonly>
+                            <input type="text" ng-model="Cust.tacc_addr2" size="47" maxlength="60" class="sedit" readonly>
                         </td>
                     </tr>
                     <tr>
                         <td class=lightbluetable align="right">商標會計電話：</td>
                         <td class=whitetablebg>
-                            (<input type=text id=F_tacc_tel0 size=4 maxlength=4 class="sedit" readonly>)
-                            <input type=text id=F_tacc_tel size=10 maxlength=10 class="sedit" readonly>-
-                            <input type=text id=F_tacc_tel1 size=5 maxlength=5 class="sedit" readonly>
+                            (<input type=text ng-model=Cust.tacc_tel0 size=4 maxlength=4 class="sedit" readonly>)
+                            <input type=text ng-model=Cust.tacc_tel size=10 maxlength=10 class="sedit" readonly>-
+                            <input type=text ng-model=Cust.tacc_tel1 size=5 maxlength=5 class="sedit" readonly>
                         </td>
                         <td class=lightbluetable align="right">商標會計傳真：</td>
-                        <td class=whitetablebg><input type=text id=F_tacc_fax size=15 maxlength=15 class="sedit" readonly></td>
+                        <td class=whitetablebg><input type=text ng-model=Cust.tacc_fax size=15 maxlength=15 class="sedit" readonly></td>
                     </tr>
                     <tr>
                         <td class=lightbluetable align="right">專利對帳地址：</td>
                         <td class=whitetablebg colspan=3>
-                            (<input type=text id=F_acc_zip size=8 maxlength=8 class="sedit" readonly>)
-                            <input type="text" id="F_acc_addr1" size="47" maxlength="60" class="sedit" readonly>
-                            <input type="text" id="F_acc_addr2" size="47" maxlength="60" class="sedit" readonly>
+                            (<input type=text ng-model=Cust.acc_zip size=8 maxlength=8 class="sedit" readonly>)
+                            <input type="text" ng-model="Cust.acc_addr1" size="47" maxlength="60" class="sedit" readonly>
+                            <input type="text" ng-model="Cust.acc_addr2" size="47" maxlength="60" class="sedit" readonly>
                         </td>
                     </tr>
                     <tr>
                         <td class=lightbluetable align="right">專利會計電話：</td>
                         <td class=whitetablebg>
-                            (<input type=text id=F_acc_tel0 size=4 maxlength=4 class="sedit" readonly>)
-                            <input type=text id=F_acc_tel size=10 maxlength=10 class="sedit" readonly>-
-                            <input type=text id=F_acc_tel1 size=5 maxlength=5 class="sedit" readonly>
+                            (<input type=text ng-model=Cust.acc_tel0 size=4 maxlength=4 class="sedit" readonly>)
+                            <input type=text ng-model=Cust.acc_tel size=10 maxlength=10 class="sedit" readonly>-
+                            <input type=text ng-model=Cust.acc_tel1 size=5 maxlength=5 class="sedit" readonly>
                         </td>
                         <td class=lightbluetable align="right">專利會計傳真：</td>
-                        <td class=whitetablebg><input type=text id=F_acc_fax size=15 maxlength=15 class="sedit" readonly></td>
+                        <td class=whitetablebg><input type=text ng-model=Cust.acc_fax size=15 maxlength=15 class="sedit" readonly></td>
                     </tr>
                     <tr>
                         <td class=lightbluetable align="right">郵寄雜誌：</td>
-                        <td class=whitetablebg colspan=3><input type=text id=F_mag size=10 maxlength=15 class="sedit" readonly></td>
+                        <td class=whitetablebg colspan=3><input type=text ng-model=Cust.mag size=10 maxlength=15 class="sedit" readonly></td>
                     </tr>
                     <tr>
                         <td class=lightbluetable align="right">顧問種類：</td>
                         <td class=whitetablebg>
-                            <select id=F_con_code size=1 disabled>
+                            <select ng-model=Cust.con_code size=1 disabled>
                                 <option value="" style="color:blue">請選擇</option>
                                 <%SQL="select cust_code,code_name from cust_code where code_type='H' order by cust_code"
                                 SET RSS=conn.execute(SQL)
@@ -282,12 +278,12 @@
                             </select>
                         </td>
                         <td class=lightbluetable align="right">顧問迄日：</td>
-                        <td class=whitetablebg><input type=text id=F_con_term size=10 class="sedit" readonly></td>
+                        <td class=whitetablebg><input type=text jq-datepicker ng-model="Cust.con_term" size=10 class="sedit" readonly>
                     </tr>
                     <tr>
                         <td class=lightbluetable align=right>專利客戶等級：</td>
                         <td class=whitetablebg>
-                            <select id=F_plevel size=1 disabled>
+                            <select ng-model=Cust.plevel size=1 disabled>
                                 <option value="" style="color:blue">請選擇</option>
                                 <option value="A">大客戶</option>
                                 <option value="B">中客戶</option>
@@ -298,7 +294,7 @@
                         </td>
                         <td class=lightbluetable align=right>商標客戶等級：</td>
                         <td class=whitetablebg>
-                            <select id=F_tlevel size=1 disabled>
+                            <select ng-model=Cust.tlevel size=1 disabled>
                                 <option value="" style="color:blue">請選擇</option>
                                 <option value="A">大客戶</option>
                                 <option value="B">中客戶</option>
@@ -311,7 +307,7 @@
                     <tr>
                         <td class=lightbluetable align=right>專利折扣代碼：</td>
                         <td class=whitetablebg>
-                            <select id=F_pdis_type size=1 disabled>
+                            <select ng-model=Cust.pdis_type size=1 disabled>
                                 <option value="" style="color:blue">請選擇</option>
                                 <%SQL="select cust_code,code_name from cust_code where code_type='Discount' order by cust_code"
                                 SET RSS=conn.execute(SQL)
@@ -324,7 +320,7 @@
                         </td>
                         <td class=lightbluetable align=right>商標折扣代碼：</td>
                         <td class=whitetablebg>
-                            <select id=F_tdis_type size=1 disabled>
+                            <select ng-model=Cust.tdis_type size=1 disabled>
                                 <option value="" style="color:blue">請選擇</option>
                                 <%SQL="select cust_code,code_name from cust_code where code_type='Discount' order by cust_code"
                                 SET RSS=conn.execute(SQL)
@@ -339,7 +335,7 @@
                     <tr>
                         <td class=lightbluetable align=right>專利付款條件：</td>
                         <td class=whitetablebg>
-                            <select id=F_ppay_type size=1 disabled>
+                            <select ng-model=Cust.ppay_type size=1 disabled>
                                 <option value="" style="color:blue">請選擇</option>
                                 <%SQL="select cust_code,code_name from cust_code where code_type='Payment' order by cust_code"
                                 SET RSS=conn.execute(SQL)
@@ -352,7 +348,7 @@
                         </td>
                         <td class=lightbluetable align=right>商標付款條件：</td>
                         <td class=whitetablebg>
-                            <select id=F_tpay_type size=1 disabled>
+                            <select ng-model=Cust.tpay_type size=1 disabled>
                                 <option value="" style="color:blue">請選擇</option>
                                 <%SQL="select cust_code,code_name from cust_code where code_type='Payment' order by cust_code"
                                 SET RSS=conn.execute(SQL)
@@ -366,12 +362,12 @@
                     </tr>
                     <tr>
                         <td class=lightbluetable align=right>備註說明：</td>
-                        <td class=whitetablebg colspan=3><textarea rows=5 cols=80 class="sedit" readonly id=F_mark></textarea>
+                        <td class=whitetablebg colspan=3><textarea rows=5 cols=80 class="sedit" readonly ng-model=Cust.mark></textarea>
                     </tr>
                 </table>
             </div>
 
-            <div class="tab-pane fade" id="attention">
+            <div class="tab-pane fade" ng-model="Cust.attention">
                 <p>
                     <h1>attention案件聯絡人</h1>
                     iOS 是一个由苹果公司开发和发布的手机操作系统。最初是于 2007 年首次发布 iPhone、iPod Touch 和 Apple
