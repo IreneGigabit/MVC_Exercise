@@ -146,6 +146,7 @@
                         <td class=whitetablebg>
                             <select ng-model="Cust.ap_country" size=1 disabled>
                                 <option value="" style="color:blue"></option>
+                                <option ng-repeat="t in optCountry" value="{{t.coun_code}}">{{t.coun_code}}-{{t.coun_c}}</option>
                                 <%SQL="SELECT coun_code, coun_c FROM country where markb<>'X' ORDER BY coun_code"
                                 SET RSS=cnn.execute(SQL)
                                 While not RSS.EOF%>
@@ -367,7 +368,7 @@
                 </table>
             </div>
 
-            <div class="tab-pane fade" ng-model="Cust.attention">
+            <div class="tab-pane fade" id="attention">
                 <p>
                     <h1>attention案件聯絡人</h1>
                     iOS 是一个由苹果公司开发和发布的手机操作系统。最初是于 2007 年首次发布 iPhone、iPod Touch 和 Apple

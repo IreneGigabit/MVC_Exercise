@@ -16,17 +16,26 @@ namespace MVCAngularHotelBooking.Controllers
         [HttpGet]
         public ActionResult getCust(string CustArea, int CustSeq) {
 
-            List<custz> cust = new List<custz>();
+            List<vcustlist> vcust = new List<vcustlist>();
 
             using (HotelDBEntities db = new HotelDBEntities()) {
-                cust = db.custzs.Where(a => a.cust_area == CustArea && a.cust_seq == CustSeq).ToList();
+                vcust = db.vcustlists.Where(a => a.cust_area == CustArea && a.cust_seq == CustSeq).ToList();
                 //foreach (var x in cust) {
                 //    x.con_term = x.con_term.Value.ToLocalTime();
                 //}
             }
 
             //return Json(cust, JsonRequestBehavior.AllowGet);
-            return new JsonResult { Data = cust, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            return new JsonResult { Data = vcust, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+
+        [HttpGet]
+        public ActionResult getCountryOpt(string SQL) {
+            using (HotelDBEntities db = new HotelDBEntities()) {
+                var sqlData = db.countries.SqlQuery(SQL).ToList();
+                return new JsonResult { Data = sqlData, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+
         }
     }
 }

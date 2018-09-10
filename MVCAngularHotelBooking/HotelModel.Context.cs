@@ -33,6 +33,11 @@ namespace MVCAngularHotelBooking
         public virtual DbSet<ValueSetKind> ValueSetKinds { get; set; }
         public virtual DbSet<apcust> apcusts { get; set; }
         public virtual DbSet<custz> custzs { get; set; }
+        public virtual DbSet<country> countries { get; set; }
+        public virtual DbSet<Cust_code> Cust_code { get; set; }
+        public virtual DbSet<custz_att> custz_att { get; set; }
+        public virtual DbSet<scode> scodes { get; set; }
+        public virtual DbSet<vcustlist> vcustlists { get; set; }
     
         public virtual ObjectResult<USP_HotelStatus_Select_Result> USP_HotelStatus_Select(string roomNo)
         {

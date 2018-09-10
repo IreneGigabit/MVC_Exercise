@@ -227,7 +227,16 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Controllers\TabController.cs" />
+    <Compile Include="country.cs">
+      <DependentUpon>HotelModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="custz.cs">
+      <DependentUpon>HotelModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="custz_att.cs">
+      <DependentUpon>HotelModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Cust_code.cs">
       <DependentUpon>HotelModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
@@ -259,6 +268,9 @@
     <Compile Include="RoomBooking.cs">
       <DependentUpon>HotelModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="scode.cs">
+      <DependentUpon>HotelModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="USP_HotelMaster_Select_Result.cs">
       <DependentUpon>HotelModel.tt</DependentUpon>
@@ -273,6 +285,9 @@
       <DependentUpon>HotelModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ValueSetKind.cs">
+      <DependentUpon>HotelModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vcustlist.cs">
       <DependentUpon>HotelModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>

@@ -51,6 +51,41 @@
           <Property Name="ap_lename" Type="varchar" MaxLength="60" />
           <Property Name="apatt_email" Type="varchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="country">
+          <Key>
+            <PropertyRef Name="coun_code" />
+          </Key>
+          <Property Name="coun_code" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="coun_e" Type="varchar" MaxLength="255" />
+          <Property Name="coun_c" Type="varchar" MaxLength="255" />
+          <Property Name="cl" Type="varchar" MaxLength="1" />
+          <Property Name="ccode" Type="varchar" MaxLength="10" />
+          <Property Name="markc" Type="varchar" MaxLength="20" />
+          <Property Name="buss_c" Type="varchar" MaxLength="100" />
+          <Property Name="tran_date" Type="smalldatetime" />
+          <Property Name="tran_scode" Type="varchar" MaxLength="5" />
+          <Property Name="markb" Type="varchar" MaxLength="20" />
+          <Property Name="markf" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Cust_code">
+          <Key>
+            <PropertyRef Name="Code_type" />
+            <PropertyRef Name="Cust_code" />
+          </Key>
+          <Property Name="Code_type" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Cust_code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Code_name" Type="varchar" MaxLength="50" />
+          <Property Name="Sql" Type="int" />
+          <Property Name="SortFld" Type="varchar" MaxLength="2" />
+          <Property Name="form_name" Type="varchar" MaxLength="60" />
+          <Property Name="Ref_code" Type="varchar" MaxLength="10" />
+          <Property Name="Dept" Type="varchar" MaxLength="2" />
+          <Property Name="Remark" Type="text" />
+          <Property Name="Mark" Type="varchar" MaxLength="1" />
+          <Property Name="mark1" Type="varchar" MaxLength="30" />
+          <Property Name="end_date" Type="smalldatetime" />
+          <Property Name="tran_date" Type="smalldatetime" />
+        </EntityType>
         <EntityType Name="custz">
           <Key>
             <PropertyRef Name="cust_area" />
@@ -147,6 +182,37 @@
           <Property Name="taxacc_tel1" Type="varchar" MaxLength="10" />
           <Property Name="taxacc_fax" Type="varchar" MaxLength="20" />
         </EntityType>
+        <EntityType Name="custz_att">
+          <Key>
+            <PropertyRef Name="cust_area" />
+            <PropertyRef Name="cust_seq" />
+            <PropertyRef Name="att_sql" />
+          </Key>
+          <Property Name="cust_area" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="cust_seq" Type="int" Nullable="false" />
+          <Property Name="att_sql" Type="smallint" Nullable="false" />
+          <Property Name="dept" Type="varchar" MaxLength="1" />
+          <Property Name="attention" Type="varchar" MaxLength="60" />
+          <Property Name="att_company" Type="varchar" MaxLength="60" />
+          <Property Name="att_title" Type="varchar" MaxLength="40" />
+          <Property Name="att_dept" Type="varchar" MaxLength="40" />
+          <Property Name="att_tel0" Type="varchar" MaxLength="4" />
+          <Property Name="att_tel" Type="varchar" MaxLength="15" />
+          <Property Name="att_tel1" Type="varchar" MaxLength="10" />
+          <Property Name="att_mobile" Type="varchar" MaxLength="30" />
+          <Property Name="att_fax" Type="varchar" MaxLength="20" />
+          <Property Name="att_zip" Type="varchar" MaxLength="8" />
+          <Property Name="att_addr1" Type="varchar" MaxLength="60" />
+          <Property Name="att_addr2" Type="varchar" MaxLength="60" />
+          <Property Name="att_email" Type="varchar" MaxLength="100" />
+          <Property Name="att_mag" Type="varchar" MaxLength="1" />
+          <Property Name="att_code" Type="varchar" MaxLength="2" />
+          <Property Name="ttran_date" Type="smalldatetime" />
+          <Property Name="ttran_scode" Type="varchar" MaxLength="5" />
+          <Property Name="ptran_date" Type="smalldatetime" />
+          <Property Name="ptran_scode" Type="varchar" MaxLength="5" />
+          <Property Name="mark" Type="varchar" MaxLength="1" />
+        </EntityType>
         <EntityType Name="HotelMaster">
           <Key>
             <PropertyRef Name="RoomID" />
@@ -169,6 +235,29 @@
           <Property Name="PaymentStatus" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="AdvancePayed" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="TotalAmountPayed" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="scode">
+          <Key>
+            <PropertyRef Name="scode" />
+          </Key>
+          <Property Name="scode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="sys_pwd" Type="varchar" MaxLength="50" />
+          <Property Name="sc_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="se_name" Type="varchar" MaxLength="20" />
+          <Property Name="UserType" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="lev" Type="varchar" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="sscode" Type="varchar" MaxLength="5" />
+          <Property Name="beg_date" Type="smalldatetime" />
+          <Property Name="end_date" Type="smalldatetime" />
+          <Property Name="LastVisit" Type="smalldatetime" />
+          <Property Name="VisitCount" Type="int" />
+          <Property Name="ReMark" Type="varchar" MaxLength="255" />
+          <Property Name="comp" Type="varchar" MaxLength="10" />
+          <Property Name="mark1" Type="varchar" MaxLength="10" />
+          <Property Name="mark2" Type="varchar" MaxLength="10" />
+          <Property Name="tran_date" Type="datetime" />
+          <Property Name="tran_scode" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="ValueSet">
           <Key>
@@ -227,6 +316,123 @@
           <Property Name="ATTRIBUTE14" Type="varchar" MaxLength="50" />
           <Property Name="ATTRIBUTE15" Type="varchar" MaxLength="50" />
         </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'C:\USERS\ICAT\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\MVC_EXERCISE\MVCANGULARHOTELBOOKING\APP_DATA\HOTELDB.MDF.dbo.vcustlist' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="vcustlist">
+          <Key>
+            <PropertyRef Name="cust_area" />
+            <PropertyRef Name="cust_seq" />
+            <PropertyRef Name="apsqlno" />
+          </Key>
+          <Property Name="cust_area" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="cust_seq" Type="int" Nullable="false" />
+          <Property Name="apsqlno" Type="int" Nullable="false" />
+          <Property Name="apclass" Type="varchar" MaxLength="2" />
+          <Property Name="ap_cname1" Type="varchar" MaxLength="60" />
+          <Property Name="ap_cname2" Type="varchar" MaxLength="60" />
+          <Property Name="ap_ename1" Type="varchar" MaxLength="100" />
+          <Property Name="ap_ename2" Type="varchar" MaxLength="100" />
+          <Property Name="ap_crep" Type="varchar" MaxLength="40" />
+          <Property Name="ap_erep" Type="varchar" MaxLength="80" />
+          <Property Name="ap_title" Type="varchar" MaxLength="50" />
+          <Property Name="id_no" Type="varchar" MaxLength="10" />
+          <Property Name="in_date" Type="smalldatetime" />
+          <Property Name="pscode" Type="varchar" MaxLength="5" />
+          <Property Name="pscodenm" Type="varchar" MaxLength="50" />
+          <Property Name="tscode" Type="varchar" MaxLength="5" />
+          <Property Name="apcust_no" Type="varchar" MaxLength="10" />
+          <Property Name="ap_country" Type="varchar" MaxLength="6" />
+          <Property Name="con_code" Type="varchar" MaxLength="4" />
+          <Property Name="con_term" Type="smalldatetime" />
+          <Property Name="dmt_date" Type="smalldatetime" />
+          <Property Name="ext_date" Type="smalldatetime" />
+          <Property Name="dmp_date" Type="smalldatetime" />
+          <Property Name="exp_date" Type="smalldatetime" />
+          <Property Name="ap_zip" Type="varchar" MaxLength="8" />
+          <Property Name="ap_addr1" Type="varchar" MaxLength="120" />
+          <Property Name="ap_addr2" Type="varchar" MaxLength="120" />
+          <Property Name="ap_eaddr1" Type="varchar" MaxLength="120" />
+          <Property Name="ap_eaddr2" Type="varchar" MaxLength="120" />
+          <Property Name="ap_eaddr3" Type="varchar" MaxLength="120" />
+          <Property Name="ap_eaddr4" Type="varchar" MaxLength="120" />
+          <Property Name="acc_zip" Type="varchar" MaxLength="8" />
+          <Property Name="acc_addr1" Type="varchar" MaxLength="60" />
+          <Property Name="acc_addr2" Type="varchar" MaxLength="60" />
+          <Property Name="acc_tel0" Type="varchar" MaxLength="4" />
+          <Property Name="acc_tel" Type="varchar" MaxLength="10" />
+          <Property Name="acc_tel1" Type="varchar" MaxLength="10" />
+          <Property Name="acc_fax" Type="varchar" MaxLength="20" />
+          <Property Name="ref_seq" Type="int" />
+          <Property Name="mag" Type="char" MaxLength="1" />
+          <Property Name="plevel" Type="varchar" MaxLength="1" />
+          <Property Name="pdis_type" Type="varchar" MaxLength="3" />
+          <Property Name="ppay_type" Type="varchar" MaxLength="3" />
+          <Property Name="tlevel" Type="varchar" MaxLength="1" />
+          <Property Name="tdis_type" Type="varchar" MaxLength="3" />
+          <Property Name="tpay_type" Type="varchar" MaxLength="3" />
+          <Property Name="www" Type="varchar" MaxLength="100" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="in_scode" Type="varchar" MaxLength="5" />
+          <Property Name="tran_code" Type="varchar" MaxLength="2" />
+          <Property Name="mark" Type="varchar" MaxLength="1" />
+          <Property Name="payout_mark" Type="varchar" MaxLength="2" />
+          <Property Name="rmark_code" Type="varchar" MaxLength="4" />
+          <Property Name="cust_remark" Type="text" />
+          <Property Name="apatt_zip" Type="varchar" MaxLength="8" />
+          <Property Name="apatt_addr1" Type="varchar" MaxLength="120" />
+          <Property Name="apatt_addr2" Type="varchar" MaxLength="120" />
+          <Property Name="apatt_tel0" Type="varchar" MaxLength="4" />
+          <Property Name="apatt_tel" Type="varchar" MaxLength="15" />
+          <Property Name="apatt_tel1" Type="varchar" MaxLength="10" />
+          <Property Name="apatt_fax" Type="varchar" MaxLength="20" />
+          <Property Name="ap_fcname" Type="varchar" MaxLength="60" />
+          <Property Name="ap_lcname" Type="varchar" MaxLength="60" />
+          <Property Name="ap_fename" Type="varchar" MaxLength="60" />
+          <Property Name="ap_lename" Type="varchar" MaxLength="60" />
+          <Property Name="pacc_attention" Type="varchar" MaxLength="60" />
+          <Property Name="pacc_title" Type="varchar" MaxLength="40" />
+          <Property Name="pacc_email" Type="varchar" MaxLength="100" />
+          <Property Name="tacc_attention" Type="varchar" MaxLength="60" />
+          <Property Name="tacc_title" Type="varchar" MaxLength="40" />
+          <Property Name="tacc_email" Type="varchar" MaxLength="100" />
+          <Property Name="tacc_zip" Type="varchar" MaxLength="8" />
+          <Property Name="tacc_addr1" Type="varchar" MaxLength="60" />
+          <Property Name="tacc_addr2" Type="varchar" MaxLength="60" />
+          <Property Name="tacc_tel0" Type="varchar" MaxLength="4" />
+          <Property Name="tacc_tel" Type="varchar" MaxLength="10" />
+          <Property Name="tacc_tel1" Type="varchar" MaxLength="10" />
+          <Property Name="tacc_fax" Type="varchar" MaxLength="20" />
+          <Property Name="acc_remark" Type="varchar" MaxLength="500" />
+          <Property Name="ppay_typem" Type="int" />
+          <Property Name="tpay_typem" Type="int" />
+          <Property Name="pspay_flag" Type="varchar" MaxLength="2" />
+          <Property Name="tspay_flag" Type="varchar" MaxLength="2" />
+          <Property Name="tax_zip" Type="varchar" MaxLength="8" />
+          <Property Name="tax_addr1" Type="varchar" MaxLength="60" />
+          <Property Name="tax_addr2" Type="varchar" MaxLength="60" />
+          <Property Name="tax_tel0" Type="varchar" MaxLength="4" />
+          <Property Name="tax_tel" Type="varchar" MaxLength="10" />
+          <Property Name="tax_tel1" Type="varchar" MaxLength="10" />
+          <Property Name="tax_fax" Type="varchar" MaxLength="20" />
+          <Property Name="tax_attention" Type="varchar" MaxLength="60" />
+          <Property Name="tax_email" Type="varchar" MaxLength="100" />
+          <Property Name="taxacc_attention" Type="varchar" MaxLength="60" />
+          <Property Name="taxacc_email" Type="varchar" MaxLength="100" />
+          <Property Name="taxacc_zip" Type="varchar" MaxLength="8" />
+          <Property Name="taxacc_addr1" Type="varchar" MaxLength="60" />
+          <Property Name="taxacc_addr2" Type="varchar" MaxLength="60" />
+          <Property Name="taxacc_tel0" Type="varchar" MaxLength="4" />
+          <Property Name="taxacc_tel" Type="varchar" MaxLength="10" />
+          <Property Name="taxacc_tel1" Type="varchar" MaxLength="10" />
+          <Property Name="taxacc_fax" Type="varchar" MaxLength="20" />
+          <Property Name="pspay_source" Type="varchar" MaxLength="20" />
+          <Property Name="pspay_seq" Type="varchar" MaxLength="15" />
+          <Property Name="pspay_refno" Type="varchar" MaxLength="50" />
+          <Property Name="tspay_source" Type="varchar" MaxLength="20" />
+          <Property Name="tspay_seq" Type="varchar" MaxLength="15" />
+          <Property Name="tspay_refno" Type="varchar" MaxLength="50" />
+          <Property Name="apatt_email" Type="varchar" MaxLength="100" />
+        </EntityType>
         <Function Name="USP_Hotel_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="RoomID" Type="int" Mode="In" />
         </Function>
@@ -260,11 +466,127 @@
         </Function>
         <EntityContainer Name="HotelDBModelStoreContainer">
           <EntitySet Name="apcust" EntityType="Self.apcust" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="country" EntityType="Self.country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cust_code" EntityType="Self.Cust_code" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="custz" EntityType="Self.custz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="custz_att" EntityType="Self.custz_att" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HotelMaster" EntityType="Self.HotelMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoomBooking" EntityType="Self.RoomBooking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="scode" EntityType="Self.scode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ValueSet" EntityType="Self.ValueSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ValueSetKind" EntityType="Self.ValueSetKind" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vcustlist" EntityType="Self.vcustlist" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vcustlist].[cust_area] AS [cust_area], 
+    [vcustlist].[cust_seq] AS [cust_seq], 
+    [vcustlist].[apsqlno] AS [apsqlno], 
+    [vcustlist].[apclass] AS [apclass], 
+    [vcustlist].[ap_cname1] AS [ap_cname1], 
+    [vcustlist].[ap_cname2] AS [ap_cname2], 
+    [vcustlist].[ap_ename1] AS [ap_ename1], 
+    [vcustlist].[ap_ename2] AS [ap_ename2], 
+    [vcustlist].[ap_crep] AS [ap_crep], 
+    [vcustlist].[ap_erep] AS [ap_erep], 
+    [vcustlist].[ap_title] AS [ap_title], 
+    [vcustlist].[id_no] AS [id_no], 
+    [vcustlist].[in_date] AS [in_date], 
+    [vcustlist].[pscode] AS [pscode], 
+    [vcustlist].[pscodenm] AS [pscodenm], 
+    [vcustlist].[tscode] AS [tscode], 
+    [vcustlist].[apcust_no] AS [apcust_no], 
+    [vcustlist].[ap_country] AS [ap_country], 
+    [vcustlist].[con_code] AS [con_code], 
+    [vcustlist].[con_term] AS [con_term], 
+    [vcustlist].[dmt_date] AS [dmt_date], 
+    [vcustlist].[ext_date] AS [ext_date], 
+    [vcustlist].[dmp_date] AS [dmp_date], 
+    [vcustlist].[exp_date] AS [exp_date], 
+    [vcustlist].[ap_zip] AS [ap_zip], 
+    [vcustlist].[ap_addr1] AS [ap_addr1], 
+    [vcustlist].[ap_addr2] AS [ap_addr2], 
+    [vcustlist].[ap_eaddr1] AS [ap_eaddr1], 
+    [vcustlist].[ap_eaddr2] AS [ap_eaddr2], 
+    [vcustlist].[ap_eaddr3] AS [ap_eaddr3], 
+    [vcustlist].[ap_eaddr4] AS [ap_eaddr4], 
+    [vcustlist].[acc_zip] AS [acc_zip], 
+    [vcustlist].[acc_addr1] AS [acc_addr1], 
+    [vcustlist].[acc_addr2] AS [acc_addr2], 
+    [vcustlist].[acc_tel0] AS [acc_tel0], 
+    [vcustlist].[acc_tel] AS [acc_tel], 
+    [vcustlist].[acc_tel1] AS [acc_tel1], 
+    [vcustlist].[acc_fax] AS [acc_fax], 
+    [vcustlist].[ref_seq] AS [ref_seq], 
+    [vcustlist].[mag] AS [mag], 
+    [vcustlist].[plevel] AS [plevel], 
+    [vcustlist].[pdis_type] AS [pdis_type], 
+    [vcustlist].[ppay_type] AS [ppay_type], 
+    [vcustlist].[tlevel] AS [tlevel], 
+    [vcustlist].[tdis_type] AS [tdis_type], 
+    [vcustlist].[tpay_type] AS [tpay_type], 
+    [vcustlist].[www] AS [www], 
+    [vcustlist].[email] AS [email], 
+    [vcustlist].[in_scode] AS [in_scode], 
+    [vcustlist].[tran_code] AS [tran_code], 
+    [vcustlist].[mark] AS [mark], 
+    [vcustlist].[payout_mark] AS [payout_mark], 
+    [vcustlist].[rmark_code] AS [rmark_code], 
+    [vcustlist].[cust_remark] AS [cust_remark], 
+    [vcustlist].[apatt_zip] AS [apatt_zip], 
+    [vcustlist].[apatt_addr1] AS [apatt_addr1], 
+    [vcustlist].[apatt_addr2] AS [apatt_addr2], 
+    [vcustlist].[apatt_tel0] AS [apatt_tel0], 
+    [vcustlist].[apatt_tel] AS [apatt_tel], 
+    [vcustlist].[apatt_tel1] AS [apatt_tel1], 
+    [vcustlist].[apatt_fax] AS [apatt_fax], 
+    [vcustlist].[ap_fcname] AS [ap_fcname], 
+    [vcustlist].[ap_lcname] AS [ap_lcname], 
+    [vcustlist].[ap_fename] AS [ap_fename], 
+    [vcustlist].[ap_lename] AS [ap_lename], 
+    [vcustlist].[pacc_attention] AS [pacc_attention], 
+    [vcustlist].[pacc_title] AS [pacc_title], 
+    [vcustlist].[pacc_email] AS [pacc_email], 
+    [vcustlist].[tacc_attention] AS [tacc_attention], 
+    [vcustlist].[tacc_title] AS [tacc_title], 
+    [vcustlist].[tacc_email] AS [tacc_email], 
+    [vcustlist].[tacc_zip] AS [tacc_zip], 
+    [vcustlist].[tacc_addr1] AS [tacc_addr1], 
+    [vcustlist].[tacc_addr2] AS [tacc_addr2], 
+    [vcustlist].[tacc_tel0] AS [tacc_tel0], 
+    [vcustlist].[tacc_tel] AS [tacc_tel], 
+    [vcustlist].[tacc_tel1] AS [tacc_tel1], 
+    [vcustlist].[tacc_fax] AS [tacc_fax], 
+    [vcustlist].[acc_remark] AS [acc_remark], 
+    [vcustlist].[ppay_typem] AS [ppay_typem], 
+    [vcustlist].[tpay_typem] AS [tpay_typem], 
+    [vcustlist].[pspay_flag] AS [pspay_flag], 
+    [vcustlist].[tspay_flag] AS [tspay_flag], 
+    [vcustlist].[tax_zip] AS [tax_zip], 
+    [vcustlist].[tax_addr1] AS [tax_addr1], 
+    [vcustlist].[tax_addr2] AS [tax_addr2], 
+    [vcustlist].[tax_tel0] AS [tax_tel0], 
+    [vcustlist].[tax_tel] AS [tax_tel], 
+    [vcustlist].[tax_tel1] AS [tax_tel1], 
+    [vcustlist].[tax_fax] AS [tax_fax], 
+    [vcustlist].[tax_attention] AS [tax_attention], 
+    [vcustlist].[tax_email] AS [tax_email], 
+    [vcustlist].[taxacc_attention] AS [taxacc_attention], 
+    [vcustlist].[taxacc_email] AS [taxacc_email], 
+    [vcustlist].[taxacc_zip] AS [taxacc_zip], 
+    [vcustlist].[taxacc_addr1] AS [taxacc_addr1], 
+    [vcustlist].[taxacc_addr2] AS [taxacc_addr2], 
+    [vcustlist].[taxacc_tel0] AS [taxacc_tel0], 
+    [vcustlist].[taxacc_tel] AS [taxacc_tel], 
+    [vcustlist].[taxacc_tel1] AS [taxacc_tel1], 
+    [vcustlist].[taxacc_fax] AS [taxacc_fax], 
+    [vcustlist].[pspay_source] AS [pspay_source], 
+    [vcustlist].[pspay_seq] AS [pspay_seq], 
+    [vcustlist].[pspay_refno] AS [pspay_refno], 
+    [vcustlist].[tspay_source] AS [tspay_source], 
+    [vcustlist].[tspay_seq] AS [tspay_seq], 
+    [vcustlist].[tspay_refno] AS [tspay_refno], 
+    [vcustlist].[apatt_email] AS [apatt_email]
+    FROM [dbo].[vcustlist] AS [vcustlist]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -331,6 +653,11 @@
           <EntitySet Name="ValueSetKinds" EntityType="HotelDBModel.ValueSetKind" />
           <EntitySet Name="apcusts" EntityType="HotelDBModel.apcust" />
           <EntitySet Name="custzs" EntityType="HotelDBModel.custz" />
+          <EntitySet Name="countries" EntityType="HotelDBModel.country" />
+          <EntitySet Name="Cust_code" EntityType="HotelDBModel.Cust_code" />
+          <EntitySet Name="custz_att" EntityType="HotelDBModel.custz_att" />
+          <EntitySet Name="scodes" EntityType="HotelDBModel.scode" />
+          <EntitySet Name="vcustlists" EntityType="HotelDBModel.vcustlist" />
         </EntityContainer>
         <ComplexType Name="USP_HotelStatus_Select_Result">
           <Property Type="String" Name="RoomNo" Nullable="false" MaxLength="100" />
@@ -557,6 +884,210 @@
           <Property Name="taxacc_tel" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="taxacc_tel1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="taxacc_fax" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="country">
+          <Key>
+            <PropertyRef Name="coun_code" />
+          </Key>
+          <Property Name="coun_code" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="coun_e" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="coun_c" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="cl" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ccode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="markc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="buss_c" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="tran_date" Type="DateTime" Precision="0" />
+          <Property Name="tran_scode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="markb" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="markf" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Cust_code">
+          <Key>
+            <PropertyRef Name="Code_type" />
+            <PropertyRef Name="Cust_code1" />
+          </Key>
+          <Property Name="Code_type" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Cust_code1" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Code_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sql" Type="Int32" />
+          <Property Name="SortFld" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="form_name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Ref_code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Dept" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Mark" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="mark1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="end_date" Type="DateTime" Precision="0" />
+          <Property Name="tran_date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="custz_att">
+          <Key>
+            <PropertyRef Name="cust_area" />
+            <PropertyRef Name="cust_seq" />
+            <PropertyRef Name="att_sql" />
+          </Key>
+          <Property Name="cust_area" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cust_seq" Type="Int32" Nullable="false" />
+          <Property Name="att_sql" Type="Int16" Nullable="false" />
+          <Property Name="dept" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="attention" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="att_company" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="att_title" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="att_dept" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="att_tel0" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="att_tel" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="att_tel1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="att_mobile" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="att_fax" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="att_zip" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="att_addr1" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="att_addr2" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="att_email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="att_mag" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="att_code" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="ttran_date" Type="DateTime" Precision="0" />
+          <Property Name="ttran_scode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="ptran_date" Type="DateTime" Precision="0" />
+          <Property Name="ptran_scode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="mark" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="scode">
+          <Key>
+            <PropertyRef Name="scode1" />
+          </Key>
+          <Property Name="scode1" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="sys_pwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sc_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="se_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UserType" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="lev" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sscode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="beg_date" Type="DateTime" Precision="0" />
+          <Property Name="end_date" Type="DateTime" Precision="0" />
+          <Property Name="LastVisit" Type="DateTime" Precision="0" />
+          <Property Name="VisitCount" Type="Int32" />
+          <Property Name="ReMark" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="comp" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="mark1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="mark2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="tran_date" Type="DateTime" Precision="3" />
+          <Property Name="tran_scode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vcustlist">
+          <Key>
+            <PropertyRef Name="cust_area" />
+            <PropertyRef Name="cust_seq" />
+            <PropertyRef Name="apsqlno" />
+          </Key>
+          <Property Name="cust_area" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cust_seq" Type="Int32" Nullable="false" />
+          <Property Name="apsqlno" Type="Int32" Nullable="false" />
+          <Property Name="apclass" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="ap_cname1" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ap_cname2" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ap_ename1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ap_ename2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ap_crep" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ap_erep" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="ap_title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_no" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="in_date" Type="DateTime" Precision="0" />
+          <Property Name="pscode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="pscodenm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tscode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="apcust_no" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ap_country" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="con_code" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="con_term" Type="DateTime" Precision="0" />
+          <Property Name="dmt_date" Type="DateTime" Precision="0" />
+          <Property Name="ext_date" Type="DateTime" Precision="0" />
+          <Property Name="dmp_date" Type="DateTime" Precision="0" />
+          <Property Name="exp_date" Type="DateTime" Precision="0" />
+          <Property Name="ap_zip" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="ap_addr1" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="ap_addr2" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="ap_eaddr1" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="ap_eaddr2" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="ap_eaddr3" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="ap_eaddr4" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="acc_zip" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="acc_addr1" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="acc_addr2" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="acc_tel0" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="acc_tel" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="acc_tel1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="acc_fax" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ref_seq" Type="Int32" />
+          <Property Name="mag" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="plevel" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="pdis_type" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="ppay_type" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="tlevel" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="tdis_type" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="tpay_type" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="www" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="in_scode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="tran_code" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="mark" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="payout_mark" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="rmark_code" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="cust_remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="apatt_zip" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="apatt_addr1" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="apatt_addr2" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="apatt_tel0" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="apatt_tel" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="apatt_tel1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="apatt_fax" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ap_fcname" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ap_lcname" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ap_fename" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ap_lename" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="pacc_attention" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="pacc_title" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="pacc_email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="tacc_attention" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="tacc_title" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="tacc_email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="tacc_zip" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="tacc_addr1" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="tacc_addr2" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="tacc_tel0" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="tacc_tel" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="tacc_tel1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="tacc_fax" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="acc_remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ppay_typem" Type="Int32" />
+          <Property Name="tpay_typem" Type="Int32" />
+          <Property Name="pspay_flag" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="tspay_flag" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="tax_zip" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="tax_addr1" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="tax_addr2" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="tax_tel0" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="tax_tel" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="tax_tel1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="tax_fax" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="tax_attention" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="tax_email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="taxacc_attention" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="taxacc_email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="taxacc_zip" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="taxacc_addr1" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="taxacc_addr2" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="taxacc_tel0" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="taxacc_tel" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="taxacc_tel1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="taxacc_fax" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="pspay_source" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="pspay_seq" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="pspay_refno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tspay_source" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="tspay_seq" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="tspay_refno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="apatt_email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -828,6 +1359,210 @@
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="www" ColumnName="www" />
                 <ScalarProperty Name="id_no" ColumnName="id_no" />
+                <ScalarProperty Name="cust_seq" ColumnName="cust_seq" />
+                <ScalarProperty Name="cust_area" ColumnName="cust_area" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="countries">
+            <EntityTypeMapping TypeName="HotelDBModel.country">
+              <MappingFragment StoreEntitySet="country">
+                <ScalarProperty Name="markf" ColumnName="markf" />
+                <ScalarProperty Name="markb" ColumnName="markb" />
+                <ScalarProperty Name="tran_scode" ColumnName="tran_scode" />
+                <ScalarProperty Name="tran_date" ColumnName="tran_date" />
+                <ScalarProperty Name="buss_c" ColumnName="buss_c" />
+                <ScalarProperty Name="markc" ColumnName="markc" />
+                <ScalarProperty Name="ccode" ColumnName="ccode" />
+                <ScalarProperty Name="cl" ColumnName="cl" />
+                <ScalarProperty Name="coun_c" ColumnName="coun_c" />
+                <ScalarProperty Name="coun_e" ColumnName="coun_e" />
+                <ScalarProperty Name="coun_code" ColumnName="coun_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cust_code">
+            <EntityTypeMapping TypeName="HotelDBModel.Cust_code">
+              <MappingFragment StoreEntitySet="Cust_code">
+                <ScalarProperty Name="tran_date" ColumnName="tran_date" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="mark1" ColumnName="mark1" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Dept" ColumnName="Dept" />
+                <ScalarProperty Name="Ref_code" ColumnName="Ref_code" />
+                <ScalarProperty Name="form_name" ColumnName="form_name" />
+                <ScalarProperty Name="SortFld" ColumnName="SortFld" />
+                <ScalarProperty Name="Sql" ColumnName="Sql" />
+                <ScalarProperty Name="Code_name" ColumnName="Code_name" />
+                <ScalarProperty Name="Cust_code1" ColumnName="Cust_code" />
+                <ScalarProperty Name="Code_type" ColumnName="Code_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="custz_att">
+            <EntityTypeMapping TypeName="HotelDBModel.custz_att">
+              <MappingFragment StoreEntitySet="custz_att">
+                <ScalarProperty Name="mark" ColumnName="mark" />
+                <ScalarProperty Name="ptran_scode" ColumnName="ptran_scode" />
+                <ScalarProperty Name="ptran_date" ColumnName="ptran_date" />
+                <ScalarProperty Name="ttran_scode" ColumnName="ttran_scode" />
+                <ScalarProperty Name="ttran_date" ColumnName="ttran_date" />
+                <ScalarProperty Name="att_code" ColumnName="att_code" />
+                <ScalarProperty Name="att_mag" ColumnName="att_mag" />
+                <ScalarProperty Name="att_email" ColumnName="att_email" />
+                <ScalarProperty Name="att_addr2" ColumnName="att_addr2" />
+                <ScalarProperty Name="att_addr1" ColumnName="att_addr1" />
+                <ScalarProperty Name="att_zip" ColumnName="att_zip" />
+                <ScalarProperty Name="att_fax" ColumnName="att_fax" />
+                <ScalarProperty Name="att_mobile" ColumnName="att_mobile" />
+                <ScalarProperty Name="att_tel1" ColumnName="att_tel1" />
+                <ScalarProperty Name="att_tel" ColumnName="att_tel" />
+                <ScalarProperty Name="att_tel0" ColumnName="att_tel0" />
+                <ScalarProperty Name="att_dept" ColumnName="att_dept" />
+                <ScalarProperty Name="att_title" ColumnName="att_title" />
+                <ScalarProperty Name="att_company" ColumnName="att_company" />
+                <ScalarProperty Name="attention" ColumnName="attention" />
+                <ScalarProperty Name="dept" ColumnName="dept" />
+                <ScalarProperty Name="att_sql" ColumnName="att_sql" />
+                <ScalarProperty Name="cust_seq" ColumnName="cust_seq" />
+                <ScalarProperty Name="cust_area" ColumnName="cust_area" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="scodes">
+            <EntityTypeMapping TypeName="HotelDBModel.scode">
+              <MappingFragment StoreEntitySet="scode">
+                <ScalarProperty Name="tran_scode" ColumnName="tran_scode" />
+                <ScalarProperty Name="tran_date" ColumnName="tran_date" />
+                <ScalarProperty Name="mark2" ColumnName="mark2" />
+                <ScalarProperty Name="mark1" ColumnName="mark1" />
+                <ScalarProperty Name="comp" ColumnName="comp" />
+                <ScalarProperty Name="ReMark" ColumnName="ReMark" />
+                <ScalarProperty Name="VisitCount" ColumnName="VisitCount" />
+                <ScalarProperty Name="LastVisit" ColumnName="LastVisit" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="beg_date" ColumnName="beg_date" />
+                <ScalarProperty Name="sscode" ColumnName="sscode" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="lev" ColumnName="lev" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="se_name" ColumnName="se_name" />
+                <ScalarProperty Name="sc_name" ColumnName="sc_name" />
+                <ScalarProperty Name="sys_pwd" ColumnName="sys_pwd" />
+                <ScalarProperty Name="scode1" ColumnName="scode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vcustlists">
+            <EntityTypeMapping TypeName="HotelDBModel.vcustlist">
+              <MappingFragment StoreEntitySet="vcustlist">
+                <ScalarProperty Name="apatt_email" ColumnName="apatt_email" />
+                <ScalarProperty Name="tspay_refno" ColumnName="tspay_refno" />
+                <ScalarProperty Name="tspay_seq" ColumnName="tspay_seq" />
+                <ScalarProperty Name="tspay_source" ColumnName="tspay_source" />
+                <ScalarProperty Name="pspay_refno" ColumnName="pspay_refno" />
+                <ScalarProperty Name="pspay_seq" ColumnName="pspay_seq" />
+                <ScalarProperty Name="pspay_source" ColumnName="pspay_source" />
+                <ScalarProperty Name="taxacc_fax" ColumnName="taxacc_fax" />
+                <ScalarProperty Name="taxacc_tel1" ColumnName="taxacc_tel1" />
+                <ScalarProperty Name="taxacc_tel" ColumnName="taxacc_tel" />
+                <ScalarProperty Name="taxacc_tel0" ColumnName="taxacc_tel0" />
+                <ScalarProperty Name="taxacc_addr2" ColumnName="taxacc_addr2" />
+                <ScalarProperty Name="taxacc_addr1" ColumnName="taxacc_addr1" />
+                <ScalarProperty Name="taxacc_zip" ColumnName="taxacc_zip" />
+                <ScalarProperty Name="taxacc_email" ColumnName="taxacc_email" />
+                <ScalarProperty Name="taxacc_attention" ColumnName="taxacc_attention" />
+                <ScalarProperty Name="tax_email" ColumnName="tax_email" />
+                <ScalarProperty Name="tax_attention" ColumnName="tax_attention" />
+                <ScalarProperty Name="tax_fax" ColumnName="tax_fax" />
+                <ScalarProperty Name="tax_tel1" ColumnName="tax_tel1" />
+                <ScalarProperty Name="tax_tel" ColumnName="tax_tel" />
+                <ScalarProperty Name="tax_tel0" ColumnName="tax_tel0" />
+                <ScalarProperty Name="tax_addr2" ColumnName="tax_addr2" />
+                <ScalarProperty Name="tax_addr1" ColumnName="tax_addr1" />
+                <ScalarProperty Name="tax_zip" ColumnName="tax_zip" />
+                <ScalarProperty Name="tspay_flag" ColumnName="tspay_flag" />
+                <ScalarProperty Name="pspay_flag" ColumnName="pspay_flag" />
+                <ScalarProperty Name="tpay_typem" ColumnName="tpay_typem" />
+                <ScalarProperty Name="ppay_typem" ColumnName="ppay_typem" />
+                <ScalarProperty Name="acc_remark" ColumnName="acc_remark" />
+                <ScalarProperty Name="tacc_fax" ColumnName="tacc_fax" />
+                <ScalarProperty Name="tacc_tel1" ColumnName="tacc_tel1" />
+                <ScalarProperty Name="tacc_tel" ColumnName="tacc_tel" />
+                <ScalarProperty Name="tacc_tel0" ColumnName="tacc_tel0" />
+                <ScalarProperty Name="tacc_addr2" ColumnName="tacc_addr2" />
+                <ScalarProperty Name="tacc_addr1" ColumnName="tacc_addr1" />
+                <ScalarProperty Name="tacc_zip" ColumnName="tacc_zip" />
+                <ScalarProperty Name="tacc_email" ColumnName="tacc_email" />
+                <ScalarProperty Name="tacc_title" ColumnName="tacc_title" />
+                <ScalarProperty Name="tacc_attention" ColumnName="tacc_attention" />
+                <ScalarProperty Name="pacc_email" ColumnName="pacc_email" />
+                <ScalarProperty Name="pacc_title" ColumnName="pacc_title" />
+                <ScalarProperty Name="pacc_attention" ColumnName="pacc_attention" />
+                <ScalarProperty Name="ap_lename" ColumnName="ap_lename" />
+                <ScalarProperty Name="ap_fename" ColumnName="ap_fename" />
+                <ScalarProperty Name="ap_lcname" ColumnName="ap_lcname" />
+                <ScalarProperty Name="ap_fcname" ColumnName="ap_fcname" />
+                <ScalarProperty Name="apatt_fax" ColumnName="apatt_fax" />
+                <ScalarProperty Name="apatt_tel1" ColumnName="apatt_tel1" />
+                <ScalarProperty Name="apatt_tel" ColumnName="apatt_tel" />
+                <ScalarProperty Name="apatt_tel0" ColumnName="apatt_tel0" />
+                <ScalarProperty Name="apatt_addr2" ColumnName="apatt_addr2" />
+                <ScalarProperty Name="apatt_addr1" ColumnName="apatt_addr1" />
+                <ScalarProperty Name="apatt_zip" ColumnName="apatt_zip" />
+                <ScalarProperty Name="cust_remark" ColumnName="cust_remark" />
+                <ScalarProperty Name="rmark_code" ColumnName="rmark_code" />
+                <ScalarProperty Name="payout_mark" ColumnName="payout_mark" />
+                <ScalarProperty Name="mark" ColumnName="mark" />
+                <ScalarProperty Name="tran_code" ColumnName="tran_code" />
+                <ScalarProperty Name="in_scode" ColumnName="in_scode" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="www" ColumnName="www" />
+                <ScalarProperty Name="tpay_type" ColumnName="tpay_type" />
+                <ScalarProperty Name="tdis_type" ColumnName="tdis_type" />
+                <ScalarProperty Name="tlevel" ColumnName="tlevel" />
+                <ScalarProperty Name="ppay_type" ColumnName="ppay_type" />
+                <ScalarProperty Name="pdis_type" ColumnName="pdis_type" />
+                <ScalarProperty Name="plevel" ColumnName="plevel" />
+                <ScalarProperty Name="mag" ColumnName="mag" />
+                <ScalarProperty Name="ref_seq" ColumnName="ref_seq" />
+                <ScalarProperty Name="acc_fax" ColumnName="acc_fax" />
+                <ScalarProperty Name="acc_tel1" ColumnName="acc_tel1" />
+                <ScalarProperty Name="acc_tel" ColumnName="acc_tel" />
+                <ScalarProperty Name="acc_tel0" ColumnName="acc_tel0" />
+                <ScalarProperty Name="acc_addr2" ColumnName="acc_addr2" />
+                <ScalarProperty Name="acc_addr1" ColumnName="acc_addr1" />
+                <ScalarProperty Name="acc_zip" ColumnName="acc_zip" />
+                <ScalarProperty Name="ap_eaddr4" ColumnName="ap_eaddr4" />
+                <ScalarProperty Name="ap_eaddr3" ColumnName="ap_eaddr3" />
+                <ScalarProperty Name="ap_eaddr2" ColumnName="ap_eaddr2" />
+                <ScalarProperty Name="ap_eaddr1" ColumnName="ap_eaddr1" />
+                <ScalarProperty Name="ap_addr2" ColumnName="ap_addr2" />
+                <ScalarProperty Name="ap_addr1" ColumnName="ap_addr1" />
+                <ScalarProperty Name="ap_zip" ColumnName="ap_zip" />
+                <ScalarProperty Name="exp_date" ColumnName="exp_date" />
+                <ScalarProperty Name="dmp_date" ColumnName="dmp_date" />
+                <ScalarProperty Name="ext_date" ColumnName="ext_date" />
+                <ScalarProperty Name="dmt_date" ColumnName="dmt_date" />
+                <ScalarProperty Name="con_term" ColumnName="con_term" />
+                <ScalarProperty Name="con_code" ColumnName="con_code" />
+                <ScalarProperty Name="ap_country" ColumnName="ap_country" />
+                <ScalarProperty Name="apcust_no" ColumnName="apcust_no" />
+                <ScalarProperty Name="tscode" ColumnName="tscode" />
+                <ScalarProperty Name="pscodenm" ColumnName="pscodenm" />
+                <ScalarProperty Name="pscode" ColumnName="pscode" />
+                <ScalarProperty Name="in_date" ColumnName="in_date" />
+                <ScalarProperty Name="id_no" ColumnName="id_no" />
+                <ScalarProperty Name="ap_title" ColumnName="ap_title" />
+                <ScalarProperty Name="ap_erep" ColumnName="ap_erep" />
+                <ScalarProperty Name="ap_crep" ColumnName="ap_crep" />
+                <ScalarProperty Name="ap_ename2" ColumnName="ap_ename2" />
+                <ScalarProperty Name="ap_ename1" ColumnName="ap_ename1" />
+                <ScalarProperty Name="ap_cname2" ColumnName="ap_cname2" />
+                <ScalarProperty Name="ap_cname1" ColumnName="ap_cname1" />
+                <ScalarProperty Name="apclass" ColumnName="apclass" />
+                <ScalarProperty Name="apsqlno" ColumnName="apsqlno" />
                 <ScalarProperty Name="cust_seq" ColumnName="cust_seq" />
                 <ScalarProperty Name="cust_area" ColumnName="cust_area" />
               </MappingFragment>
