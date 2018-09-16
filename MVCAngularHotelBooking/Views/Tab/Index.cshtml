@@ -147,18 +147,14 @@
                             <select ng-model="Cust.ap_country" size=1 disabled>
                                 <option value="" style="color:blue"></option>
                                 <option ng-repeat="t in optCountry" value="{{t.coun_code}}">{{t.coun_code}}-{{t.coun_c}}</option>
-                                <%SQL="SELECT coun_code, coun_c FROM country where markb<>'X' ORDER BY coun_code"
-                                SET RSS=cnn.execute(SQL)
-                                While not RSS.EOF%>
-                                <option value="<%=trim(RSS(0))%>"><%=trim(RSS(0))%>-<%=trim(RSS(1))%></option>
-                                <%	RSS.movenext
-                                wend %>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td class=lightbluetable align=right width=16%>客戶種類：</td>
-                        <td class=whitetablebg><input type=text ng-model="Cust.apclass" class="sedit" readonly size="30"></td>
+                        <td class=whitetablebg><input type=hidden ng-model="Cust.apclass" class="sedit" readonly size="30">
+                            <input type=text class="sedit" readonly size="30" value="{{Cust.apclass+' '+Cust.apclassnm}}">
+                        </td>
                         <td class=lightbluetable align="right" width="15%">客戶群組：</td>
                         <td class=whitetablebg><input type=text ng-model="Cust.ref_seq" class="sedit" readonly></td>
                     </tr>
@@ -266,16 +262,9 @@
                     <tr>
                         <td class=lightbluetable align="right">顧問種類：</td>
                         <td class=whitetablebg>
-                            <select ng-model=Cust.con_code size=1 disabled>
+                            <select ng-model="Cust.con_code" size=1 disabled>
                                 <option value="" style="color:blue">請選擇</option>
-                                <%SQL="select cust_code,code_name from cust_code where code_type='H' order by cust_code"
-                                SET RSS=conn.execute(SQL)
-                                While not RSS.EOF%>
-                                <option value="<%=trim(RSS(0))%>"><%=trim(RSS(0))%>---<%=RSS(1)%></option>
-                                <%	RSS.movenext
-                                wend
-                                RSS.close
-                                set RSS=nothing	%>
+                                <option ng-repeat="t in optConCode" value="{{t.cust_code}}">{{t.cust_code}}---{{t.code_name}}</option>
                             </select>
                         </td>
                         <td class=lightbluetable align="right">顧問迄日：</td>
@@ -308,56 +297,32 @@
                     <tr>
                         <td class=lightbluetable align=right>專利折扣代碼：</td>
                         <td class=whitetablebg>
-                            <select ng-model=Cust.pdis_type size=1 disabled>
+                            <select ng-model="Cust.pdis_type" size=1 disabled>
                                 <option value="" style="color:blue">請選擇</option>
-                                <%SQL="select cust_code,code_name from cust_code where code_type='Discount' order by cust_code"
-                                SET RSS=conn.execute(SQL)
-                                While not RSS.EOF%>
-                                <option value="<%=trim(RSS(0))%>"><%=trim(RSS(0))%>---<%=RSS(1)%></option>
-                                <%	RSS.movenext
-                                wend
-                                RSS.close%>
+                                <option ng-repeat="t in optDisType" value="{{t.cust_code}}">{{t.cust_code}}---{{t.code_name}}</option>
                             </select>
                         </td>
                         <td class=lightbluetable align=right>商標折扣代碼：</td>
                         <td class=whitetablebg>
-                            <select ng-model=Cust.tdis_type size=1 disabled>
+                            <select ng-model="Cust.tdis_type" size=1 disabled>
                                 <option value="" style="color:blue">請選擇</option>
-                                <%SQL="select cust_code,code_name from cust_code where code_type='Discount' order by cust_code"
-                                SET RSS=conn.execute(SQL)
-                                While not RSS.EOF%>
-                                <option value="<%=trim(RSS(0))%>"><%=trim(RSS(0))%>---<%=RSS(1)%></option>
-                                <%	RSS.movenext
-                                wend
-                                RSS.close%>
+                                <option ng-repeat="t in optDisType" value="{{t.cust_code}}">{{t.cust_code}}---{{t.code_name}}</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td class=lightbluetable align=right>專利付款條件：</td>
                         <td class=whitetablebg>
-                            <select ng-model=Cust.ppay_type size=1 disabled>
+                            <select ng-model="Cust.ppay_type" size=1 disabled>
                                 <option value="" style="color:blue">請選擇</option>
-                                <%SQL="select cust_code,code_name from cust_code where code_type='Payment' order by cust_code"
-                                SET RSS=conn.execute(SQL)
-                                While not RSS.EOF%>
-                                <option value="<%=trim(RSS(0))%>"><%=trim(RSS(0))%>---<%=RSS(1)%></option>
-                                <%	RSS.movenext
-                                wend
-                                RSS.close%>
+                                <option ng-repeat="t in optPayType" value="{{t.cust_code}}">{{t.cust_code}}---{{t.code_name}}</option>
                             </select>
                         </td>
                         <td class=lightbluetable align=right>商標付款條件：</td>
                         <td class=whitetablebg>
                             <select ng-model=Cust.tpay_type size=1 disabled>
                                 <option value="" style="color:blue">請選擇</option>
-                                <%SQL="select cust_code,code_name from cust_code where code_type='Payment' order by cust_code"
-                                SET RSS=conn.execute(SQL)
-                                While not RSS.EOF%>
-                                <option value="<%=trim(RSS(0))%>"><%=trim(RSS(0))%>---<%=RSS(1)%></option>
-                                <%	RSS.movenext
-                                wend
-                                RSS.close%>
+                                <option ng-repeat="t in optPayType" value="{{t.cust_code}}">{{t.cust_code}}---{{t.code_name}}</option>
                             </select>
                         </td>
                     </tr>

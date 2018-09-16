@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Data;
 using System.Web.Mvc;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace MVCAngularHotelBooking.Controllers
 {
@@ -34,6 +36,17 @@ namespace MVCAngularHotelBooking.Controllers
             using (HotelDBEntities db = new HotelDBEntities()) {
                 var sqlData = db.countries.SqlQuery(SQL).ToList();
                 return new JsonResult { Data = sqlData, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+
+        }
+
+        [HttpGet]
+        public ActionResult getSQLData(string SQL) {
+            string connStr = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            using (DBHelper conn = new DBHelper(connStr)) {
+                DataTable dt = new DataTable();
+                conn.DataTable(SQL, dt);
+                return Content(JsonConvert.SerializeObject(dt, Formatting.Indented), "application/json");
             }
 
         }
