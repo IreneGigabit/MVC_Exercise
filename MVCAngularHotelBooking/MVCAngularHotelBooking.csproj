@@ -297,6 +297,7 @@
     <Content Include="App_Data\HotelDB_log.ldf">
       <DependentUpon>HotelDB.mdf</DependentUpon>
     </Content>
+    <Content Include="CheckWord.aspx" />
     <Content Include="Content\all.css" />
     <Content Include="Content\all.min.css" />
     <Content Include="Content\bootstrap-grid.css" />
