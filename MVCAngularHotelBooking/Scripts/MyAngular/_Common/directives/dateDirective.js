@@ -33,22 +33,23 @@
                     var ar = date.split("/");
                     //date = new Date(ar[2], ar[0] - 1, ar[1]);//m,d,y
                     date = new Date(ar[0], ar[1] - 1, ar[2]);//y,m,d
-                    ngModelCtrl.$setViewValue("/Date(" + date.getTime() + ")/");
+                    //ngModelCtrl.$setViewValue("/Date(" + date.getTime() + ")/");
+                    ngModelCtrl.$setViewValue($filter('date')($filter('mydate')("/Date(" + date.getTime() + ")/"), 'yyyy/MM/dd'));
                     scope.$apply();
                 }
             });
            
             scope.$watch('Cust.con_term', function () {
-                scope.Cust.con_term = $filter('date')($filter('mydate')(scope.Cust.con_term), 'yyyy/MM/dd'); //'yyyy/MM/dd'
+                //scope.Cust.con_term = $filter('date')($filter('mydate')(scope.Cust.con_term), 'yyyy/MM/dd'); //'yyyy/MM/dd'
             });
             
-            /*
+            
             ngModelCtrl.$formatters.unshift(function (v) {
                 //v = $filter('mydate')(v);
                 //scope.Cust.con_term = v;
                 return $filter('date')($filter('mydate')(v), 'yyyy/MM/dd');
             });
-            */
+            
         }
     };
 });
